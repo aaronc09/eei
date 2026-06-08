@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;
+  --slate-mid:#5F5E5A;
+  --slate-light:#B4B2A9;
+  --slate-tint:#F1EFE8;
+  --coral:#C8522A;
+  --coral-dark:#8C3519;
+  --coral-mid:#D96A3E;
+  --coral-light:#EDA07E;
+  --coral-tint:#FAECE7;
+  --blush:#FDF7F5;
+  --blush-mid:#F9EFE9;
+  --white:#ffffff;
+  --border:#EDE8E2;
+  --border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{
+  width:38px;height:38px;background:var(--slate);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0;
+}
+.nav-monogram::after{
+  content:'';position:absolute;bottom:-3px;right:-3px;
+  width:13px;height:13px;border-radius:4px;background:var(--coral);
+}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.active{color:var(--coral);font-weight:600}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  padding:140px 4rem 80px;
+  background:var(--blush);
+  position:relative;overflow:hidden;
+}
+.page-hero-bg{
+  position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.07),transparent 65%);
+  pointer-events:none;
+}
+.page-hero-eyebrow{
+  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:.65rem;
+}
+.page-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;
+  line-height:1.05;color:var(--slate);margin-bottom:1rem;
+  letter-spacing:-.01em;
+}
+.page-hero h1 em{font-style:italic;color:var(--coral)}
+.page-hero p{
+  font-size:1.05rem;font-weight:300;line-height:1.8;
+  color:var(--slate-mid);max-width:520px;
+}
+
+/* ── MAIN CONTENT ── */
+.contact-body{
+  padding:5rem 4rem 8rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:start;
+}
+
+/* ── LEFT: contact info ── */
+.contact-info{display:flex;flex-direction:column;gap:2rem}
+
+.info-block{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;
+  padding:1.75rem 2rem;
+  transition:box-shadow .2s;
+}
+.info-block:hover{box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.info-block-top{display:flex;align-items:center;gap:1rem;margin-bottom:.85rem}
+.info-icon{
+  width:44px;height:44px;border-radius:10px;background:var(--coral-tint);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;
+}
+.info-block-title{font-size:1rem;font-weight:700;color:var(--slate)}
+.info-block p{font-size:.9rem;font-weight:300;line-height:1.75;color:var(--slate-mid)}
+.info-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.9rem;font-weight:600;color:var(--coral);
+  text-decoration:none;margin-top:.75rem;transition:gap .2s;
+}
+.info-link:hover{gap:.75rem}
+
+/* social cards */
+.social-cards{display:flex;gap:.85rem}
+.social-card{
+  flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  text-decoration:none;transition:all .22s;
+}
+.social-card:hover{border-color:var(--coral-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.social-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.si-instagram{background:linear-gradient(135deg,#f9eae4,#fae0d8)}
+.si-linkedin{background:#E8F0F8}
+.social-name{font-size:.8rem;font-weight:700;color:var(--slate)}
+.social-handle{font-size:.72rem;color:var(--slate-mid)}
+
+/* faq */
+.faq-section{margin-top:1rem}
+.faq-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--slate);
+  margin-bottom:1.25rem;
+}
+.faq-item{
+  border-bottom:1px solid var(--border);
+  padding:1rem 0;
+}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  font-size:.9rem;font-weight:600;color:var(--slate);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;user-select:none;
+}
+.faq-q:hover{color:var(--coral)}
+.faq-chevron{font-size:.75rem;color:var(--slate-light);transition:transform .25s;flex-shrink:0}
+.faq-a{
+  font-size:.875rem;font-weight:300;line-height:1.75;color:var(--slate-mid);
+  max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+}
+.faq-item.open .faq-a{max-height:200px;padding-top:.65rem}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+
+/* ── RIGHT: form ── */
+.contact-form-wrap{position:sticky;top:90px}
+.form-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:2.75rem;
+  border-top:4px solid var(--coral);
+}
+.form-card h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:var(--slate);
+  margin-bottom:.3rem;
+}
+.form-card>p{font-size:.875rem;color:var(--slate-mid);margin-bottom:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group:last-of-type{margin-bottom:0}
+.form-label{font-size:.78rem;font-weight:600;color:var(--slate);letter-spacing:.02em}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:.75rem 1rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  background:var(--blush);color:var(--slate);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;
+  transition:border-color .2s,background .2s;outline:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  border-color:var(--coral-light);background:var(--white);
+}
+.form-textarea{resize:vertical;min-height:120px;line-height:1.6}
+.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%235F5E5A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.submit-btn{
+  width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;
+  border-radius:8px;cursor:pointer;margin-top:1.5rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;
+  transition:background .2s,transform .15s;letter-spacing:.01em;
+}
+.submit-btn:hover{background:var(--coral-dark);transform:translateY(-1px)}
+.form-note{font-size:.72rem;color:var(--slate-light);text-align:center;margin-top:.75rem}
+
+/* success state */
+.success-msg{
+  display:none;text-align:center;padding:2rem 1rem;
+}
+.success-msg.show{display:block}
+.success-icon{font-size:3rem;margin-bottom:1rem}
+.success-msg h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;
+  color:var(--slate);margin-bottom:.5rem;
+}
+.success-msg p{font-size:.9rem;color:var(--slate-mid);line-height:1.7}
+
+/* ── FOOTER ── */
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.page-hero{animation:fadeUp .8s ease both}
+.contact-body{animation:fadeUp .8s .12s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <p class="page-hero-eyebrow">Get in touch</p>
+  <h1>We'd love to <em>hear from you.</em></h1>
+  <p>Whether you want to host a workshop, partner with us, volunteer, or just ask a question — reach out and we'll get back to you within 48 hours.</p>
+</section>
+
+<!-- MAIN -->
+<div class="contact-body">
+
+  <!-- LEFT -->
+  <div class="contact-info">
+
+    <div class="info-block">
+      <div class="info-block-top">
+        <div class="info-icon">✉️</div>
+        <div class="info-block-title">Email us</div>
+      </div>
+      <p>For general inquiries, partnership opportunities, or anything else — email is the best way to reach us.</p>
+      <a href="mailto:hello@eei.org" class="info-link">hello@eei.org →</a>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-top">
+        <div class="info-icon">🎤</div>
+        <div class="info-block-title">Press & media</div>
+      </div>
+      <p>Covering emergency preparedness, community health, or nonprofits in New Jersey? We're happy to connect with journalists and content creators.</p>
+      <a href="mailto:press@eei.org" class="info-link">press@eei.org →</a>
+    </div>
+
+    <div>
+      <div style="font-size:.78rem;font-weight:600;color:var(--slate);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem">Follow us</div>
+      <div class="social-cards">
+        <a href="https://instagram.com/eei" target="_blank" class="social-card">
+          <div class="social-icon si-instagram">📸</div>
+          <div class="social-name">Instagram</div>
+          <div class="social-handle">@eei_nj</div>
+        </a>
+        <a href="https://linkedin.com/company/eei" target="_blank" class="social-card">
+          <div class="social-icon si-linkedin">💼</div>
+          <div class="social-name">LinkedIn</div>
+          <div class="social-handle">Emergency Education Initiative</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-title">Common questions</div>
+      <div class="faq-item">
+        <div class="faq-q">Are your workshops really free? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">Yes — every EEI program is completely free to attend. We are a 501(c)(3) nonprofit funded entirely by donations and grants.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you come to our school or workplace? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">Absolutely. We love bringing workshops to schools, workplaces, faith communities, and neighborhood groups. Fill out the contact form and select "Host a workshop" to get started.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need any medical background? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">None at all. Every program is designed for people with zero medical experience. If you can follow simple instructions, you can take one of our courses.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I volunteer with EEI? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">We're always looking for volunteers to help with events, outreach, and operations. Use the contact form below and select "Volunteer" as your reason for reaching out.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="contact-form-wrap">
+    <div class="form-card">
+      <h2>Send us a message</h2>
+      <p>We'll get back to you within 48 hours.</p>
+
+      <div id="form-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First name</label>
+            <input type="text" class="form-input" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last name</label>
+            <input type="text" class="form-input" placeholder="Doe">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input type="email" class="form-input" placeholder="jane@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Organization <span style="font-weight:400;color:var(--slate-light)">(optional)</span></label>
+          <input type="text" class="form-input" placeholder="School, workplace, community group...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Reason for reaching out</label>
+          <select class="form-select form-input">
+            <option value="">Select one...</option>
+            <option>General question</option>
+            <option>Host a workshop</option>
+            <option>Volunteer</option>
+            <option>Donate or sponsor</option>
+            <option>Partnership opportunity</option>
+            <option>Press or media inquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell us a bit more..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Send message →</button>
+        <p class="form-note">We read every message personally and respond within 48 hours.</p>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <div class="success-icon">✅</div>
+        <h3>Message sent!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 48 hours. In the meantime, feel free to follow us on Instagram or LinkedIn.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  document.getElementById('form-body').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+}
+const faqs = document.querySelectorAll('.faq-item');
+faqs.forEach(f => {
+  f.querySelector('.faq-q').addEventListener('click', () => {
+    const wasOpen = f.classList.contains('open');
+    faqs.forEach(x => x.classList.remove('open'));
+    if (!wasOpen) f.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;
+  --slate-mid:#5F5E5A;
+  --slate-light:#B4B2A9;
+  --slate-tint:#F1EFE8;
+  --coral:#C8522A;
+  --coral-dark:#8C3519;
+  --coral-mid:#D96A3E;
+  --coral-light:#EDA07E;
+  --coral-tint:#FAECE7;
+  --blush:#FDF7F5;
+  --blush-mid:#F9EFE9;
+  --white:#ffffff;
+  --border:#EDE8E2;
+  --border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{
+  width:38px;height:38px;background:var(--slate);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0;
+}
+.nav-monogram::after{
+  content:'';position:absolute;bottom:-3px;right:-3px;
+  width:13px;height:13px;border-radius:4px;background:var(--coral);
+}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+.hero{padding-top:70px;min-height:100vh;background:var(--blush);position:relative;overflow:hidden;display:grid;grid-template-rows:1fr auto}
+.hero-bg-circle{position:absolute;top:-180px;right:-180px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.09),transparent 65%);pointer-events:none}
+.hero-bg-circle2{position:absolute;bottom:-120px;left:5%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(200,82,42,0.05),transparent 65%);pointer-events:none}
+.hero-body{display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;padding:5.5rem 4rem 3.5rem;align-items:center;position:relative;z-index:1}
+.hero-left{animation:fadeUp .85s ease both}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:1.75rem}
+.hero-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:blink 2.4s ease-in-out infinite}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,5.5vw,5.4rem);font-weight:700;line-height:1.02;color:var(--slate);margin-bottom:1.5rem;letter-spacing:-.01em}
+.hero-h1 .italic{font-style:italic;color:var(--coral)}
+.hero-desc{font-size:1.05rem;font-weight:300;line-height:1.82;color:var(--slate-mid);max-width:480px;margin-bottom:2.75rem}
+.hero-ctas{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--coral);color:var(--white);border:none;padding:.95rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;border-radius:6px;transition:all .22s;letter-spacing:.01em}
+.btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,82,42,.25)}
+.btn-secondary{background:transparent;color:var(--slate);border:1.5px solid var(--border-strong);padding:.95rem 1.85rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:500;border-radius:6px;transition:all .22s}
+.btn-secondary:hover{border-color:var(--slate-mid)}
+.hero-right{display:flex;flex-direction:column;gap:1.1rem;animation:fadeUp .85s .18s ease both}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.3rem;transition:box-shadow .22s,border-color .22s}
+.stat-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);border-color:var(--coral-light)}
+.stat-icon-box{width:50px;height:50px;border-radius:12px;background:var(--coral-tint);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--slate);line-height:1}
+.stat-desc{font-size:.82rem;color:var(--slate-mid);line-height:1.5;margin-top:3px}
+.hero-strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--slate);position:relative;z-index:1}
+.hs-cell{padding:1.4rem 2rem;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:.2rem}
+.hs-cell:last-child{border:none}
+.hs-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.hs-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--white);line-height:1}
+.hs-val span{color:var(--coral-mid)}
+
+.announce{background:var(--coral-tint);border-bottom:1px solid rgba(200,82,42,.15);padding:.9rem 4rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.ann-badge{background:var(--coral);color:var(--white);font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:4px;flex-shrink:0}
+.ann-text{font-size:.85rem;color:var(--slate-mid)}
+.ann-link{font-size:.85rem;font-weight:700;color:var(--coral);text-decoration:none;white-space:nowrap}
+.ann-link:hover{color:var(--coral-dark)}
+
+.programs{padding:8rem 4rem;background:var(--white)}
+.section-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.65rem}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;color:var(--slate);line-height:1.12}
+.programs-header{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3.5rem}
+.programs-header-right{font-size:.95rem;font-weight:300;line-height:1.8;color:var(--slate-mid);padding-bottom:.25rem}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.prog-card{border:1.5px solid var(--border);border-radius:12px;padding:1.85rem;position:relative;overflow:hidden;transition:all .25s;cursor:default;background:var(--blush)}
+.prog-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--coral-light));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.07);border-color:var(--coral-light);background:var(--white)}
+.prog-card:hover::after{transform:scaleX(1)}
+.prog-card-num{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:700;color:rgba(200,82,42,.1);line-height:1;margin-bottom:.4rem}
+.prog-card h3{font-size:1rem;font-weight:700;color:var(--slate);margin-bottom:.5rem}
+.prog-card p{font-size:.875rem;color:var(--slate-mid);line-height:1.68}
+.prog-pill{display:inline-flex;align-items:center;margin-top:1.1rem;font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--coral-tint);color:var(--coral-dark);padding:.28rem .85rem;border-radius:999px}
+
+.why{padding:8rem 4rem;background:var(--blush-mid);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.why-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.35rem}
+.why-left p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
+.learn-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--coral);text-decoration:none;margin-top:.5rem;transition:gap .2s}
+.learn-link:hover{gap:.85rem}
+.why-right{display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.why-stat{background:var(--white);padding:1.6rem 2rem;display:flex;align-items:center;gap:1.5rem}
+.why-bar{width:4px;height:48px;border-radius:2px;flex-shrink:0}
+.why-bar-coral{background:var(--coral)}
+.why-bar-slate{background:var(--slate)}
+.why-bar-light{background:var(--slate-light)}
+.why-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--slate);line-height:1}
+.why-stat-label{font-size:.83rem;color:var(--slate-mid);margin-top:3px}
+
+.about{padding:8rem 4rem;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-visual{position:relative}
+.about-img{background:var(--slate);border-radius:18px;height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-img-texture{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
+.about-img-letter{font-family:'Cormorant Garamond',serif;font-size:11rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.06);user-select:none;position:relative;z-index:1}
+.about-badge{position:absolute;top:1.75rem;right:1.75rem;background:var(--coral);border-radius:10px;padding:.9rem 1.25rem;text-align:center;box-shadow:0 8px 24px rgba(200,82,42,.35)}
+.about-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--white);line-height:1}
+.about-badge span{font-size:.63rem;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.1em;text-transform:uppercase}
+.about-img::before{content:'';position:absolute;inset:-12px;border-radius:22px;border:1.5px solid var(--coral-tint);z-index:-1}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.25rem}
+.about-text p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
+.founders{display:flex;flex-direction:column;gap:.85rem;margin-top:2rem}
+.founder-card{display:flex;align-items:center;gap:1rem;background:var(--blush);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.25rem;border-left:4px solid var(--coral);transition:box-shadow .2s}
+.founder-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.founder-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;flex-shrink:0}
+.av1{background:var(--slate);color:var(--white)}
+.av2{background:var(--coral-tint);color:var(--coral-dark)}
+.founder-name{font-size:.9rem;font-weight:700;color:var(--slate)}
+.founder-role{font-size:.75rem;color:var(--slate-mid)}
+
+.pullquote{background:var(--coral);padding:7rem 4rem;text-align:center;position:relative;overflow:hidden}
+.pq-deco{position:absolute;left:2.5rem;top:-2rem;font-family:'Cormorant Garamond',serif;font-size:22rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.07);line-height:1;pointer-events:none;user-select:none}
+.pq-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:600;color:var(--white);max-width:740px;margin:0 auto 1.35rem;line-height:1.38;position:relative;z-index:1}
+.pq-attr{font-size:.83rem;color:rgba(255,255,255,.6);position:relative;z-index:1;letter-spacing:.02em}
+
+.donate{padding:8rem 4rem;background:var(--blush);display:grid;grid-template-columns:1fr 1fr;gap:5.5rem;align-items:center}
+.donate-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.25rem}
+.donate-left p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1.75rem}
+.impact-items{display:flex;flex-direction:column;gap:.75rem}
+.impact-item{display:flex;align-items:center;gap:.9rem;font-size:.9rem;color:var(--slate-mid)}
+.impact-check{width:24px;height:24px;border-radius:50%;background:var(--coral-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.impact-check::before{content:'✓';font-size:.65rem;font-weight:800;color:var(--coral)}
+.donate-right{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:2.75rem;border-top:4px solid var(--coral)}
+.donate-right h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;color:var(--slate);margin-bottom:.3rem}
+.donate-right>p{font-size:.875rem;color:var(--slate-mid);margin-bottom:1.65rem}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.5rem}
+.tier{padding:.65rem .25rem;border:1.5px solid var(--border);background:var(--blush);cursor:pointer;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--slate);border-radius:8px;transition:all .2s}
+.tier:hover,.tier.active{background:var(--slate);color:var(--white);border-color:var(--slate)}
+.give-btn{width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;transition:background .2s}
+.give-btn:hover{background:var(--coral-dark)}
+.secure{font-size:.72rem;color:var(--slate-light);text-align:center;margin-top:.85rem}
+
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Programs</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Resources</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Free community programs · New Jersey
+      </div>
+      <h1 class="hero-h1">Know what to do<br>when it <span class="italic">matters most.</span></h1>
+      <p class="hero-desc">The Emergency Education Initiative trains communities to recognize and respond to life-threatening emergencies. No medical background needed — just a willingness to learn and act.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary">Find a free workshop →</button>
+        <button class="btn-secondary">Our mission</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon-box">❤️</div>
+        <div><div class="stat-number">70%</div><div class="stat-desc">of cardiac arrests happen at home, not at a hospital</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-box">⏱️</div>
+        <div><div class="stat-number">3×</div><div class="stat-desc">better survival odds when a trained bystander acts first</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-box">📋</div>
+        <div><div class="stat-number">$0</div><div class="stat-desc">cost to attend any Emergency Education Initiative program</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="hs-cell"><div class="hs-label">People trained</div><div class="hs-val">1,200<span>+</span></div></div>
+    <div class="hs-cell"><div class="hs-label">Free workshops</div><div class="hs-val">40<span>+</span></div></div>
+    <div class="hs-cell"><div class="hs-label">Topics covered</div><div class="hs-val">6<span> programs</span></div></div>
+    <div class="hs-cell"><div class="hs-label">Cost to attend</div><div class="hs-val">$<span>0</span></div></div>
+  </div>
+</section>
+
+<div class="announce">
+  <span class="ann-badge">New</span>
+  <span class="ann-text">Stroke awareness workshops now available in Bergen &amp; Passaic County.</span>
+  <a href="#" class="ann-link">Register now →</a>
+</div>
+
+<section class="programs">
+  <div class="programs-header">
+    <div>
+      <p class="section-eyebrow">What we teach</p>
+      <h2 class="section-h2">Life-saving skills for<br>ordinary people.</h2>
+    </div>
+    <p class="programs-header-right">Evidence-based programs designed by an active EMT — delivered in plain language for people with no medical background. Every session is free and open to all.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card"><div class="prog-card-num">01</div><h3>Cardiac Arrest &amp; CPR</h3><p>Hands-only CPR and AED use — two skills that take under an hour and can triple survival rates in sudden cardiac arrest.</p><span class="prog-pill">60 min · Hands-on</span></div>
+    <div class="prog-card"><div class="prog-card-num">02</div><h3>Stroke Recognition</h3><p>Learn FAST and what to do in the minutes before EMS arrives. Time is brain — every second counts.</p><span class="prog-pill">45 min · Discussion</span></div>
+    <div class="prog-card"><div class="prog-card-num">03</div><h3>Diabetic Emergencies</h3><p>Recognize hypo- and hyperglycemia, respond safely, and know when to call 911. Designed for families and coworkers.</p><span class="prog-pill">45 min · Discussion</span></div>
+    <div class="prog-card"><div class="prog-card-num">04</div><h3>Seizure First Aid</h3><p>What to do — and what not to do. We bust dangerous myths and build calm, confident response skills.</p><span class="prog-pill">30 min · Discussion</span></div>
+    <div class="prog-card"><div class="prog-card-num">05</div><h3>Choking Response</h3><p>The Heimlich maneuver for adults, children, and infants — with hands-on mannequin practice included.</p><span class="prog-pill">30 min · Hands-on</span></div>
+    <div class="prog-card"><div class="prog-card-num">06</div><h3>Anaphylaxis &amp; EpiPen</h3><p>Recognize severe allergic reactions and use an epinephrine auto-injector with confidence and clarity.</p><span class="prog-pill">30 min · Hands-on</span></div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-left">
+    <p class="section-eyebrow">Why it matters</p>
+    <h2>The first responder is almost never a paramedic.</h2>
+    <p>When a cardiac arrest or stroke happens, the person nearest the victim is a spouse, a coworker, or a stranger. The gap between collapse and EMS arrival averages 7–10 minutes. Trained bystanders fill that gap — and that gap is the difference between life and death.</p>
+    <p>Our programs are designed by an active EMT and built around what he's seen on the job. Every course is free, every lesson is practical, and no medical background is required.</p>
+    <a href="#" class="learn-link">Read our approach →</a>
+  </div>
+  <div class="why-right">
+    <div class="why-stat"><div class="why-bar why-bar-coral"></div><div><div class="why-stat-num">1,200+</div><div class="why-stat-label">community members trained since founding</div></div></div>
+    <div class="why-stat"><div class="why-bar why-bar-slate"></div><div><div class="why-stat-num">40+</div><div class="why-stat-label">free workshops held across NJ communities</div></div></div>
+    <div class="why-stat"><div class="why-bar why-bar-light"></div><div><div class="why-stat-num">12</div><div class="why-stat-label">community and organizational partners</div></div></div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-visual">
+    <div class="about-img">
+      <div class="about-img-texture"></div>
+      <div class="about-img-letter">EEI</div>
+      <div class="about-badge"><strong>100%</strong><span>Free to attend</span></div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">Our story</p>
+    <h2>Built by a first responder, for everyone.</h2>
+    <p>Our co-founder is a certified EMT who has responded to hundreds of real emergencies. Every program we offer is designed around what he's witnessed on the job — and the moments where a prepared bystander changed the outcome.</p>
+    <p>We believe emergency education shouldn't sit behind paywalls or hospital waiting rooms. It belongs in schools, workplaces, houses of worship, and neighborhood centers.</p>
+    <div class="founders">
+      <div class="founder-card"><div class="founder-av av1">JD</div><div><div class="founder-name">Jane Doe</div><div class="founder-role">Co-founder &amp; Executive Director</div></div></div>
+      <div class="founder-card"><div class="founder-av av2">RS</div><div><div class="founder-name">Ryan Smith, EMT-B</div><div class="founder-role">Co-founder &amp; Medical Program Lead</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pullquote">
+  <div class="pq-deco">"</div>
+  <p class="pq-quote">"Most people freeze in an emergency not because they don't care — but because nobody ever showed them what to do."</p>
+  <p class="pq-attr">— Co-founder &amp; Lead EMT, Emergency Education Initiative</p>
+</section>
+
+<section class="donate">
+  <div class="donate-left">
+    <p class="section-eyebrow">Support our work</p>
+    <h2>Help us reach the next community.</h2>
+    <p>We're 100% volunteer-run. Every dollar goes directly to free programs for people who need them most — no overhead, no salaries, just impact.</p>
+    <div class="impact-items">
+      <div class="impact-item"><div class="impact-check"></div>$25 covers supplies for one workshop participant</div>
+      <div class="impact-item"><div class="impact-check"></div>$50 funds a complete 60-minute CPR session</div>
+      <div class="impact-item"><div class="impact-check"></div>$100 brings a full workshop to a community group</div>
+      <div class="impact-item"><div class="impact-check"></div>$250 sponsors an entire outreach event</div>
+    </div>
+  </div>
+  <div class="donate-right">
+    <h3>Make a donation</h3>
+    <p>Choose an amount. Fully tax-deductible.</p>
+    <div class="tiers">
+      <button class="tier">$25</button>
+      <button class="tier active">$50</button>
+      <button class="tier">$100</button>
+      <button class="tier">$250</button>
+    </div>
+    <button class="give-btn">Donate $50 →</button>
+    <p class="secure">🔒 Secure · 501(c)(3) · 100% to programs</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#">Donate</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+const tiers=document.querySelectorAll('.tier');
+const giveBtn=document.querySelector('.give-btn');
+tiers.forEach(t=>{
+  t.addEventListener('click',()=>{
+    tiers.forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    giveBtn.textContent=`Donate ${t.textContent} →`;
+  });
+});
+</script>
+</body>
+</html>

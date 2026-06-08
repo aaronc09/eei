@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs — Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;--slate-mid:#5F5E5A;--slate-light:#B4B2A9;--slate-tint:#F1EFE8;
+  --coral:#C8522A;--coral-dark:#8C3519;--coral-mid:#D96A3E;--coral-light:#EDA07E;--coral-tint:#FAECE7;
+  --blush:#FDF7F5;--blush-mid:#F9EFE9;--white:#ffffff;--border:#EDE8E2;--border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{width:38px;height:38px;background:var(--slate);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.nav-monogram::after{content:'';position:absolute;bottom:-3px;right:-3px;width:13px;height:13px;border-radius:4px;background:var(--coral)}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.active{color:var(--coral);font-weight:600}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+.page-hero{padding:140px 4rem 80px;background:var(--blush);position:relative;overflow:hidden;animation:fadeUp .8s ease both}
+.hero-bg{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.07),transparent 65%);pointer-events:none}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.65rem}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;color:var(--slate);margin-bottom:1rem;letter-spacing:-.01em}
+.page-hero h1 em{font-style:italic;color:var(--coral)}
+.page-hero>p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--slate-mid);max-width:520px}
+
+/* QUICK FACTS */
+.quick-facts{background:var(--slate);display:grid;grid-template-columns:repeat(4,1fr)}
+.qf-cell{padding:1.75rem 2rem;border-right:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.85rem}
+.qf-cell:last-child{border:none}
+.qf-icon{font-size:1.4rem;flex-shrink:0}
+.qf-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.qf-label{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.15rem}
+
+/* PROGRAMS GRID */
+.programs-section{padding:7rem 4rem}
+.programs-header{margin-bottom:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.programs-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15}
+.programs-header p{font-size:.95rem;font-weight:300;color:var(--slate-mid);line-height:1.8}
+.programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+
+.prog-card{
+  background:var(--white);border:1.5px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:all .25s;
+}
+.prog-card:hover{border-color:var(--coral-light);box-shadow:0 12px 32px rgba(0,0,0,.08);transform:translateY(-3px)}
+.prog-card-header{
+  padding:1.75rem 2rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:1.25rem;
+}
+.prog-emoji-box{
+  width:52px;height:52px;border-radius:12px;background:var(--coral-tint);
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;
+}
+.prog-header-text{flex:1}
+.prog-num{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:.25rem}
+.prog-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--slate);line-height:1.2}
+.prog-pills{display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap}
+.prog-pill{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .7rem;border-radius:999px}
+.pill-duration{background:var(--blush);color:var(--slate-mid);border:1px solid var(--border)}
+.pill-type{background:var(--coral-tint);color:var(--coral-dark)}
+.prog-card-body{padding:1.5rem 2rem}
+.prog-desc{font-size:.9rem;font-weight:300;line-height:1.8;color:var(--slate-mid);margin-bottom:1.25rem}
+.prog-learn{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.prog-learn-title{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:.25rem}
+.prog-learn-item{display:flex;align-items:flex-start;gap:.65rem;font-size:.85rem;color:var(--slate-mid);line-height:1.5}
+.prog-learn-item::before{content:'→';color:var(--coral);flex-shrink:0;font-weight:600}
+.prog-signup-btn{
+  width:100%;padding:.85rem;background:var(--coral);color:var(--white);border:none;
+  border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.875rem;font-weight:700;transition:background .2s;
+  text-align:center;text-decoration:none;display:block;
+}
+.prog-signup-btn:hover{background:var(--coral-dark)}
+
+/* WHO IS IT FOR */
+.who-section{padding:7rem 4rem;background:var(--blush-mid)}
+.who-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:3rem}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.who-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:all .22s}
+.who-card:hover{border-color:var(--coral-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.who-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.who-card h3{font-size:1rem;font-weight:700;color:var(--slate);margin-bottom:.5rem}
+.who-card p{font-size:.875rem;color:var(--slate-mid);line-height:1.65}
+
+/* HOST */
+.host-section{
+  padding:7rem 4rem;background:var(--white);
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.host-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.25rem}
+.host-text p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
+.host-steps{display:flex;flex-direction:column;gap:.85rem;margin-top:2rem}
+.host-step{display:flex;align-items:flex-start;gap:1rem}
+.host-step-num{
+  width:32px;height:32px;border-radius:50%;background:var(--coral);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:700;color:var(--white);flex-shrink:0;
+}
+.host-step-text{font-size:.9rem;color:var(--slate-mid);line-height:1.6;padding-top:.35rem}
+.host-step-text strong{display:block;font-weight:600;color:var(--slate);margin-bottom:.1rem}
+
+.host-form-card{background:var(--blush);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;border-top:4px solid var(--coral)}
+.host-form-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--slate);margin-bottom:.3rem}
+.host-form-card>p{font-size:.875rem;color:var(--slate-mid);margin-bottom:1.75rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-label{font-size:.78rem;font-weight:600;color:var(--slate);letter-spacing:.02em}
+.form-input,.form-select,.form-textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;background:var(--white);color:var(--slate);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--coral-light)}
+.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%235F5E5A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.host-submit{width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;transition:background .2s;margin-top:.5rem}
+.host-submit:hover{background:var(--coral-dark)}
+
+/* CTA */
+.cta-band{background:var(--coral);padding:6rem 4rem;text-align:center;position:relative;overflow:hidden}
+.cta-deco{position:absolute;left:2rem;top:-2rem;font-family:'Cormorant Garamond',serif;font-size:20rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.07);line-height:1;pointer-events:none;user-select:none}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:1rem;position:relative;z-index:1}
+.cta-band p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.75);max-width:480px;margin:0 auto 2.5rem;line-height:1.75;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-white{background:var(--white);color:var(--coral);border:none;padding:.9rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:700;border-radius:6px;transition:all .2s;text-decoration:none}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-outline-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4);padding:.9rem 2rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;border-radius:6px;transition:all .2s;text-decoration:none}
+.btn-outline-white:hover{border-color:rgba(255,255,255,.8)}
+
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="programs.html" class="active">Programs</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <p class="eyebrow">Free programs</p>
+  <h1>Skills that save lives,<br><em>free for everyone.</em></h1>
+  <p>Six evidence-based programs designed by an active EMT and delivered in plain language — no medical background required. Every session is free and open to the public.</p>
+</section>
+
+<div class="quick-facts">
+  <div class="qf-cell"><span class="qf-icon">📋</span><div><div class="qf-num">6</div><div class="qf-label">Programs available</div></div></div>
+  <div class="qf-cell"><span class="qf-icon">⏱️</span><div><div class="qf-num">30–60</div><div class="qf-label">Minutes per session</div></div></div>
+  <div class="qf-cell"><span class="qf-icon">👥</span><div><div class="qf-num">Any</div><div class="qf-label">Group size welcome</div></div></div>
+  <div class="qf-cell"><span class="qf-icon">💰</span><div><div class="qf-num">$0</div><div class="qf-label">Always free</div></div></div>
+</div>
+
+<section class="programs-section">
+  <div class="programs-header">
+    <div>
+      <p class="eyebrow">What we offer</p>
+      <h2>Our six programs</h2>
+    </div>
+    <p>Each program is self-contained — attend one or all six. Sessions can be booked individually or as a full-day community event.</p>
+  </div>
+  <div class="programs-grid">
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">❤️</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 01</div>
+          <div class="prog-title">Cardiac Arrest &amp; CPR</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">60 min</span>
+            <span class="prog-pill pill-type">Hands-on</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">Sudden cardiac arrest kills over 350,000 Americans each year — most of them outside a hospital. Bystander CPR can double or triple survival rates, yet fewer than half of cardiac arrest victims receive it. This session changes that.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Recognize the signs of sudden cardiac arrest</div>
+          <div class="prog-learn-item">Perform hands-only CPR on adults</div>
+          <div class="prog-learn-item">Use an AED (automated external defibrillator)</div>
+          <div class="prog-learn-item">Keep someone alive until EMS arrives</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">🧠</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 02</div>
+          <div class="prog-title">Stroke Recognition</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">45 min</span>
+            <span class="prog-pill pill-type">Discussion</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">Stroke is the leading cause of long-term disability in the US. The faster a stroke is identified and treated, the less brain damage occurs. Knowing the warning signs and acting immediately can preserve function — and save a life.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Use the FAST method to identify stroke symptoms</div>
+          <div class="prog-learn-item">Understand why every minute matters</div>
+          <div class="prog-learn-item">What to do — and not do — while waiting for EMS</div>
+          <div class="prog-learn-item">Recognize less common stroke symptoms</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">🩸</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 03</div>
+          <div class="prog-title">Diabetic Emergencies</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">45 min</span>
+            <span class="prog-pill pill-type">Discussion</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">With over 37 million Americans living with diabetes, the chances you'll encounter a diabetic emergency are significant. Hypoglycemia can cause confusion, unconsciousness, and death — and it's often mistaken for intoxication. This session teaches you to tell the difference and respond correctly.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Distinguish hypoglycemia from hyperglycemia</div>
+          <div class="prog-learn-item">Respond safely when someone can and can't swallow</div>
+          <div class="prog-learn-item">Know when to call 911 versus manage at home</div>
+          <div class="prog-learn-item">Support a diabetic colleague or family member</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">⚡</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 04</div>
+          <div class="prog-title">Seizure First Aid</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">30 min</span>
+            <span class="prog-pill pill-type">Discussion</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">Seizures are frightening to witness — and dangerous myths about how to respond are everywhere. This session sets the record straight. You'll leave knowing exactly what to do and what never to do, so you can respond calmly and effectively.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Protect someone during a seizure safely</div>
+          <div class="prog-learn-item">Time the seizure and know when to call 911</div>
+          <div class="prog-learn-item">Debunk the most dangerous myths (never restrain, never put anything in the mouth)</div>
+          <div class="prog-learn-item">Support someone in the postictal recovery phase</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">🫁</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 05</div>
+          <div class="prog-title">Choking Response</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">30 min</span>
+            <span class="prog-pill pill-type">Hands-on</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">Choking is a leading cause of accidental death — and it's almost always survivable with a trained bystander. This hands-on session uses mannequins to give you real practice, not just theory, so you can act confidently in the moment.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Recognize the difference between partial and complete airway obstruction</div>
+          <div class="prog-learn-item">Perform the Heimlich maneuver on adults and children</div>
+          <div class="prog-learn-item">Respond to choking in infants under 1 year</div>
+          <div class="prog-learn-item">Perform abdominal thrusts on yourself if alone</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <div class="prog-card-header">
+        <div class="prog-emoji-box">💉</div>
+        <div class="prog-header-text">
+          <div class="prog-num">Program 06</div>
+          <div class="prog-title">Anaphylaxis &amp; EpiPen</div>
+          <div class="prog-pills">
+            <span class="prog-pill pill-duration">30 min</span>
+            <span class="prog-pill pill-type">Hands-on</span>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card-body">
+        <p class="prog-desc">Severe allergic reactions can progress to life-threatening anaphylaxis within minutes. Epinephrine is the only effective treatment — and every second of delay matters. This session gives you the confidence to recognize anaphylaxis and use an EpiPen correctly.</p>
+        <div class="prog-learn">
+          <div class="prog-learn-title">You'll learn to</div>
+          <div class="prog-learn-item">Identify the signs of anaphylaxis vs. a mild allergic reaction</div>
+          <div class="prog-learn-item">Use an epinephrine auto-injector (EpiPen) step by step</div>
+          <div class="prog-learn-item">Position someone in anaphylactic shock correctly</div>
+          <div class="prog-learn-item">Know when a second dose is needed</div>
+        </div>
+        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="who-section">
+  <p class="eyebrow">Who attends</p>
+  <h2>These programs are for everyone.</h2>
+  <div class="who-grid">
+    <div class="who-card"><span class="who-icon">🏫</span><h3>Schools &amp; educators</h3><p>Build a safer school community by training staff, parents, and older students in emergency response.</p></div>
+    <div class="who-card"><span class="who-icon">🏢</span><h3>Workplaces</h3><p>Employees spend a third of their lives at work. A trained coworker could be the difference in a cardiac emergency.</p></div>
+    <div class="who-card"><span class="who-icon">⛪</span><h3>Faith communities</h3><p>We regularly partner with churches, mosques, temples, and other faith organizations to reach their congregations.</p></div>
+    <div class="who-card"><span class="who-icon">🏘️</span><h3>Neighborhood groups</h3><p>HOAs, block associations, and neighborhood groups can host workshops for their entire community.</p></div>
+    <div class="who-card"><span class="who-icon">👨‍👩‍👧</span><h3>Families</h3><p>Parents, grandparents, and caregivers who want to be prepared for an emergency at home.</p></div>
+    <div class="who-card"><span class="who-icon">🏥</span><h3>Healthcare partners</h3><p>Hospitals and clinics that want to extend emergency education into the communities they serve.</p></div>
+  </div>
+</section>
+
+<section class="host-section">
+  <div class="host-text">
+    <p class="eyebrow">Host a workshop</p>
+    <h2>Bring EEI to your community.</h2>
+    <p>We come to you. Whether you have 10 people or 200, we'll tailor a session to fit your group, your space, and your schedule — at no cost.</p>
+    <div class="host-steps">
+      <div class="host-step"><div class="host-step-num">1</div><div class="host-step-text"><strong>Fill out the form</strong>Tell us about your group, preferred topics, and available dates.</div></div>
+      <div class="host-step"><div class="host-step-num">2</div><div class="host-step-text"><strong>We'll reach out within 48 hours</strong>Our team will confirm details and answer any questions.</div></div>
+      <div class="host-step"><div class="host-step-num">3</div><div class="host-step-text"><strong>We show up ready</strong>Our EMT lead arrives with all equipment and materials. You just provide the space.</div></div>
+    </div>
+  </div>
+  <div class="host-form-card">
+    <h3>Request a workshop</h3>
+    <p>We'll get back to you within 48 hours.</p>
+    <div class="form-group"><label class="form-label">Your name</label><input type="text" class="form-input" placeholder="Jane Doe"></div>
+    <div class="form-group"><label class="form-label">Organization or group</label><input type="text" class="form-input" placeholder="Lincoln Elementary School"></div>
+    <div class="form-group"><label class="form-label">Email address</label><input type="email" class="form-input" placeholder="jane@example.com"></div>
+    <div class="form-group">
+      <label class="form-label">Program(s) of interest</label>
+      <select class="form-select">
+        <option>CPR &amp; Cardiac Arrest</option>
+        <option>Stroke Recognition</option>
+        <option>Diabetic Emergencies</option>
+        <option>Seizure First Aid</option>
+        <option>Choking Response</option>
+        <option>Anaphylaxis &amp; EpiPen</option>
+        <option>Multiple / Full day</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Estimated group size</label><input type="text" class="form-input" placeholder="e.g. 25 people"></div>
+    <button class="host-submit" onclick="this.textContent='Request sent ✓';this.style.background='var(--slate)'">Send request →</button>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-deco">"</div>
+  <h2>Ready to get trained?</h2>
+  <p>Find an upcoming public workshop near you, or request a private session for your group.</p>
+  <div class="cta-btns">
+    <a href="events.html" class="btn-white">See upcoming events</a>
+    <a href="contact.html" class="btn-outline-white">Contact us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+</body>
+</html>

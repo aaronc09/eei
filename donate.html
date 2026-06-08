@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;--slate-mid:#5F5E5A;--slate-light:#B4B2A9;--slate-tint:#F1EFE8;
+  --coral:#C8522A;--coral-dark:#8C3519;--coral-mid:#D96A3E;--coral-light:#EDA07E;--coral-tint:#FAECE7;
+  --blush:#FDF7F5;--blush-mid:#F9EFE9;--white:#ffffff;--border:#EDE8E2;--border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{width:38px;height:38px;background:var(--slate);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.nav-monogram::after{content:'';position:absolute;bottom:-3px;right:-3px;width:13px;height:13px;border-radius:4px;background:var(--coral)}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.active{color:var(--coral);font-weight:600}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+.page-hero{padding:140px 4rem 80px;background:var(--blush);position:relative;overflow:hidden;animation:fadeUp .8s ease both}
+.hero-bg{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.07),transparent 65%);pointer-events:none}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.65rem}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;color:var(--slate);margin-bottom:1rem;letter-spacing:-.01em}
+.page-hero h1 em{font-style:italic;color:var(--coral)}
+.page-hero>p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--slate-mid);max-width:520px}
+
+/* DONATE MAIN */
+.donate-main{padding:5rem 4rem 8rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+
+/* LEFT */
+.donate-left{display:flex;flex-direction:column;gap:2rem}
+.impact-heading{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--slate);margin-bottom:1.25rem}
+.impact-cards{display:flex;flex-direction:column;gap:.85rem}
+.impact-card{
+  display:flex;align-items:center;gap:1.25rem;
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem 1.5rem;transition:all .22s;cursor:default;
+}
+.impact-card:hover{border-color:var(--coral-light);box-shadow:0 6px 20px rgba(0,0,0,.07);transform:translateX(4px)}
+.impact-amount{
+  font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;
+  color:var(--coral);line-height:1;flex-shrink:0;min-width:72px;
+}
+.impact-desc{font-size:.875rem;color:var(--slate-mid);line-height:1.55}
+.impact-desc strong{display:block;font-size:.9rem;font-weight:600;color:var(--slate);margin-bottom:.15rem}
+
+.trust-block{background:var(--slate);border-radius:14px;padding:2rem}
+.trust-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1.25rem}
+.trust-items{display:flex;flex-direction:column;gap:.85rem}
+.trust-item{display:flex;align-items:flex-start;gap:.85rem}
+.trust-check{width:20px;height:20px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:var(--white);flex-shrink:0;margin-top:1px}
+.trust-text{font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.55}
+.trust-text strong{color:rgba(255,255,255,.9);font-weight:600}
+
+.ein-block{background:var(--blush-mid);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.ein-label{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-light);margin-bottom:.5rem}
+.ein-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--slate)}
+.ein-desc{font-size:.8rem;color:var(--slate-mid);margin-top:.35rem;line-height:1.55}
+
+/* RIGHT */
+.donate-right{position:sticky;top:90px}
+.donate-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:2.75rem;border-top:4px solid var(--coral)}
+.donate-card h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--slate);margin-bottom:.3rem}
+.donate-card>p{font-size:.875rem;color:var(--slate-mid);margin-bottom:2rem}
+
+.frequency-tabs{display:flex;gap:.5rem;margin-bottom:1.75rem;background:var(--blush);border-radius:8px;padding:.3rem}
+.freq-tab{flex:1;padding:.55rem;border:none;background:transparent;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--slate-mid);border-radius:6px;transition:all .2s;text-align:center}
+.freq-tab.active{background:var(--white);color:var(--slate);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+
+.amount-label{font-size:.78rem;font-weight:600;color:var(--slate);letter-spacing:.02em;margin-bottom:.65rem}
+.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:.85rem}
+.amt{padding:.65rem .25rem;border:1.5px solid var(--border);background:var(--blush);cursor:pointer;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--slate);border-radius:8px;transition:all .2s}
+.amt:hover,.amt.active{background:var(--slate);color:var(--white);border-color:var(--slate)}
+.custom-input-wrap{margin-bottom:1.5rem;position:relative}
+.custom-prefix{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:.9rem;font-weight:600;color:var(--slate-mid)}
+.custom-input{width:100%;padding:.75rem 1rem .75rem 1.75rem;border:1.5px solid var(--border);border-radius:8px;background:var(--blush);color:var(--slate);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
+.custom-input:focus{border-color:var(--coral-light);background:var(--white)}
+.custom-input::placeholder{color:var(--slate-light)}
+.give-btn{width:100%;padding:1rem;background:var(--coral);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.975rem;font-weight:700;transition:background .2s,transform .15s;letter-spacing:.01em}
+.give-btn:hover{background:var(--coral-dark);transform:translateY(-1px)}
+.secure-note{font-size:.72rem;color:var(--slate-light);text-align:center;margin-top:.75rem}
+.divider-line{height:1px;background:var(--border);margin:1.5rem 0}
+.other-ways-title{font-size:.8rem;font-weight:600;color:var(--slate);margin-bottom:.85rem}
+.other-ways{display:flex;flex-direction:column;gap:.6rem}
+.other-way{display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:var(--slate-mid)}
+.ow-icon{width:32px;height:32px;border-radius:8px;background:var(--coral-tint);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+
+/* CORPORATE */
+.corporate{padding:7rem 4rem;background:var(--blush-mid);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.corp-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.25rem}
+.corp-text p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
+.corp-tiers{display:flex;flex-direction:column;gap:.85rem}
+.corp-tier{display:flex;align-items:center;gap:1.25rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}
+.corp-badge{padding:.4rem .85rem;border-radius:6px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.cb-bronze{background:#F5EBE0;color:#8B5A2B}
+.cb-silver{background:#F0F0F0;color:#5A5A5A}
+.cb-gold{background:#FFF8E1;color:#8B6914}
+.corp-tier-desc{font-size:.85rem;color:var(--slate-mid);line-height:1.5}
+.corp-tier-desc strong{display:block;font-size:.9rem;font-weight:600;color:var(--slate);margin-bottom:.15rem}
+.corp-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:600;color:var(--coral);text-decoration:none;margin-top:1.5rem;transition:gap .2s}
+.corp-link:hover{gap:.75rem}
+
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <p class="eyebrow">Support our work</p>
+  <h1>Every dollar trains<br><em>someone who matters.</em></h1>
+  <p>We're 100% volunteer-run. No salaries, no overhead — every dollar you give goes directly to free emergency education programs for communities that need them most.</p>
+</section>
+
+<div class="donate-main">
+
+  <div class="donate-left">
+    <div>
+      <h3 class="impact-heading">What your gift funds</h3>
+      <div class="impact-cards">
+        <div class="impact-card"><div class="impact-amount">$25</div><div class="impact-desc"><strong>Supplies for one participant</strong>Covers printed materials, practice equipment, and handouts for one workshop attendee.</div></div>
+        <div class="impact-card"><div class="impact-amount">$50</div><div class="impact-desc"><strong>One complete CPR session</strong>Funds a full 60-minute hands-on CPR and AED workshop for a small group.</div></div>
+        <div class="impact-card"><div class="impact-amount">$100</div><div class="impact-desc"><strong>A workshop for a community group</strong>Brings a full EEI program to a school, workplace, or community center.</div></div>
+        <div class="impact-card"><div class="impact-amount">$250</div><div class="impact-desc"><strong>Sponsor an entire outreach event</strong>Covers all costs for a multi-program community event including equipment and staffing.</div></div>
+        <div class="impact-card"><div class="impact-amount">$500</div><div class="impact-desc"><strong>A month of programs</strong>Funds everything EEI needs to run a full month of free workshops across our service area.</div></div>
+      </div>
+    </div>
+
+    <div class="trust-block">
+      <div class="trust-title">Our commitment to donors</div>
+      <div class="trust-items">
+        <div class="trust-item"><div class="trust-check">✓</div><div class="trust-text"><strong>100% to programs.</strong> We are 100% volunteer-run. Every dollar donated goes directly to program delivery.</div></div>
+        <div class="trust-item"><div class="trust-check">✓</div><div class="trust-text"><strong>Fully transparent.</strong> Our financials are publicly available. We file Form 990 annually with the IRS.</div></div>
+        <div class="trust-item"><div class="trust-check">✓</div><div class="trust-text"><strong>Tax-deductible.</strong> EEI is a registered 501(c)(3) nonprofit. Your donation is fully tax-deductible to the extent permitted by law.</div></div>
+        <div class="trust-item"><div class="trust-check">✓</div><div class="trust-text"><strong>You'll hear from us.</strong> Donors receive impact updates so you can see exactly how your gift is being used.</div></div>
+      </div>
+    </div>
+
+    <div class="ein-block">
+      <div class="ein-label">Our EIN</div>
+      <div class="ein-num">XX-XXXXXXX</div>
+      <div class="ein-desc">Keep this for your tax records. EEI is a registered 501(c)(3) organization — replace with your real EIN once obtained.</div>
+    </div>
+  </div>
+
+  <div class="donate-right">
+    <div class="donate-card">
+      <h2>Make a donation</h2>
+      <p>Choose a frequency and amount below.</p>
+
+      <div class="frequency-tabs">
+        <button class="freq-tab active" onclick="setFreq(this,'one-time')">One-time</button>
+        <button class="freq-tab" onclick="setFreq(this,'monthly')">Monthly</button>
+      </div>
+
+      <div class="amount-label">Select an amount</div>
+      <div class="amounts">
+        <button class="amt" onclick="setAmt(this,'25')">$25</button>
+        <button class="amt active" onclick="setAmt(this,'50')">$50</button>
+        <button class="amt" onclick="setAmt(this,'100')">$100</button>
+        <button class="amt" onclick="setAmt(this,'250')">$250</button>
+      </div>
+
+      <div class="custom-input-wrap">
+        <span class="custom-prefix">$</span>
+        <input type="number" class="custom-input" id="custom-amt" placeholder="Or enter a custom amount" oninput="customAmt(this)">
+      </div>
+
+      <!-- REPLACE this button with your real PayPal or Stripe embed when ready -->
+      <button class="give-btn" id="give-btn">Donate $50 →</button>
+      <p class="secure-note">🔒 Secure · 501(c)(3) · Tax-deductible · 100% to programs</p>
+
+      <div class="divider-line"></div>
+      <div class="other-ways-title">Other ways to give</div>
+      <div class="other-ways">
+        <div class="other-way"><div class="ow-icon">✉️</div>Mail a check to our address — contact us for details</div>
+        <div class="other-way"><div class="ow-icon">🏢</div>Employer match — many companies will match your donation</div>
+        <div class="other-way"><div class="ow-icon">🎁</div>Give in honor of someone — contact us to arrange</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<section class="corporate">
+  <div class="corp-text">
+    <p class="eyebrow">Corporate giving</p>
+    <h2>Sponsor a workshop for your community.</h2>
+    <p>Businesses, hospitals, and organizations can sponsor EEI workshops for their employees, customers, or surrounding communities. Corporate sponsors receive recognition on our website, at events, and in our communications.</p>
+    <a href="contact.html" class="corp-link">Get in touch about sponsorship →</a>
+  </div>
+  <div class="corp-tiers">
+    <div class="corp-tier"><span class="corp-badge cb-bronze">Bronze</span><div class="corp-tier-desc"><strong>$500 / year</strong>Logo on our website and thank-you in event materials.</div></div>
+    <div class="corp-tier"><span class="corp-badge cb-silver">Silver</span><div class="corp-tier-desc"><strong>$1,000 / year</strong>One sponsored workshop for your team or community, plus logo recognition.</div></div>
+    <div class="corp-tier"><span class="corp-badge cb-gold">Gold</span><div class="corp-tier-desc"><strong>$2,500 / year</strong>Three sponsored workshops, prominent logo placement, and a named program sponsorship.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+let freq='one-time', amt='50';
+function setFreq(el,f){
+  document.querySelectorAll('.freq-tab').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active'); freq=f; updateBtn();
+}
+function setAmt(el,a){
+  document.querySelectorAll('.amt').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active'); amt=a;
+  document.getElementById('custom-amt').value='';
+  updateBtn();
+}
+function customAmt(el){
+  document.querySelectorAll('.amt').forEach(x=>x.classList.remove('active'));
+  amt=el.value||''; updateBtn();
+}
+function updateBtn(){
+  const label = amt ? `$${amt}` : 'an amount';
+  const freqLabel = freq==='monthly' ? '/mo' : '';
+  document.getElementById('give-btn').textContent=`Donate ${label}${freqLabel} →`;
+}
+</script>
+</body>
+</html>

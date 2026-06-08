@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;--slate-mid:#5F5E5A;--slate-light:#B4B2A9;--slate-tint:#F1EFE8;
+  --coral:#C8522A;--coral-dark:#8C3519;--coral-mid:#D96A3E;--coral-light:#EDA07E;--coral-tint:#FAECE7;
+  --blush:#FDF7F5;--blush-mid:#F9EFE9;--white:#ffffff;--border:#EDE8E2;--border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{width:38px;height:38px;background:var(--slate);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.nav-monogram::after{content:'';position:absolute;bottom:-3px;right:-3px;width:13px;height:13px;border-radius:4px;background:var(--coral)}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.active{color:var(--coral);font-weight:600}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+.page-hero{padding:140px 4rem 80px;background:var(--blush);position:relative;overflow:hidden;animation:fadeUp .8s ease both}
+.hero-bg{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.07),transparent 65%);pointer-events:none}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.65rem}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;color:var(--slate);margin-bottom:1rem;letter-spacing:-.01em}
+.page-hero h1 em{font-style:italic;color:var(--coral)}
+.page-hero>p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--slate-mid);max-width:540px}
+
+/* MISSION */
+.mission{padding:6rem 4rem;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.mission-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.25rem}
+.mission-text p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
+.mission-values{display:flex;flex-direction:column;gap:.75rem;margin-top:1.75rem}
+.value-row{display:flex;align-items:flex-start;gap:.85rem;padding:.85rem 1rem;background:var(--blush);border-radius:8px;border-left:3px solid var(--coral)}
+.value-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.value-title{font-size:.875rem;font-weight:700;color:var(--slate);margin-bottom:.2rem}
+.value-desc{font-size:.82rem;color:var(--slate-mid);line-height:1.55}
+.mission-visual{position:relative}
+.mission-img{background:var(--slate);border-radius:16px;height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.mission-img-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
+.mission-img-letter{font-family:'Cormorant Garamond',serif;font-size:11rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.06);user-select:none;position:relative;z-index:1}
+.mission-badge{position:absolute;bottom:1.75rem;right:1.75rem;background:var(--coral);border-radius:10px;padding:.9rem 1.25rem;text-align:center;box-shadow:0 8px 24px rgba(200,82,42,.35)}
+.mission-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--white);line-height:1}
+.mission-badge span{font-size:.63rem;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.1em;text-transform:uppercase}
+
+/* STATS */
+.stats-band{background:var(--slate);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.07);text-align:center}
+.stat-cell:last-child{border:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--white);line-height:1}
+.stat-num span{color:var(--coral-mid)}
+.stat-lbl{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.35rem}
+
+/* FOUNDERS */
+.founders{padding:7rem 4rem;background:var(--blush-mid)}
+.founders-header{margin-bottom:3.5rem}
+.founders-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:.5rem}
+.founders-header p{font-size:.975rem;font-weight:300;color:var(--slate-mid);max-width:520px;line-height:1.75}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.founder-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .22s}
+.founder-card:hover{box-shadow:0 10px 32px rgba(0,0,0,.08)}
+.founder-top{background:var(--slate);padding:2.5rem;display:flex;align-items:center;gap:1.5rem;position:relative;overflow:hidden}
+.founder-top::before{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.03)}
+.founder-avatar{width:72px;height:72px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--white);flex-shrink:0;border:3px solid rgba(255,255,255,.15)}
+.founder-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white)}
+.founder-title{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;letter-spacing:.03em}
+.founder-body{padding:1.75rem 2rem}
+.founder-body p{font-size:.9rem;font-weight:300;line-height:1.8;color:var(--slate-mid);margin-bottom:1rem}
+.founder-body p:last-child{margin-bottom:0}
+.founder-tag{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.85rem;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--coral-tint);color:var(--coral-dark);padding:.25rem .85rem;border-radius:999px}
+
+/* STORY TIMELINE */
+.timeline{padding:7rem 4rem;background:var(--white)}
+.timeline h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:3.5rem}
+.timeline-items{display:flex;flex-direction:column;gap:0;max-width:640px}
+.tl-item{display:flex;gap:2rem;position:relative;padding-bottom:2.5rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:44px}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--coral);border:3px solid var(--white);box-shadow:0 0 0 2px var(--coral);flex-shrink:0;margin-top:4px}
+.tl-line{flex:1;width:2px;background:var(--border);margin-top:6px}
+.tl-item:last-child .tl-line{display:none}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--coral);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.tl-title{font-size:1rem;font-weight:700;color:var(--slate);margin-bottom:.4rem}
+.tl-desc{font-size:.875rem;font-weight:300;line-height:1.75;color:var(--slate-mid)}
+
+/* PARTNERS */
+.partners{padding:6rem 4rem;background:var(--blush-mid)}
+.partners h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--slate);margin-bottom:.5rem}
+.partners>p{font-size:.95rem;font-weight:300;color:var(--slate-mid);margin-bottom:3rem;line-height:1.75}
+.partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.partner-tile{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;align-items:center;justify-content:center;min-height:80px;transition:all .2s}
+.partner-tile:hover{border-color:var(--coral-light);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.partner-tile span{font-size:.85rem;font-weight:600;color:var(--slate-mid);text-align:center}
+
+/* CTA */
+.cta{background:var(--coral);padding:6rem 4rem;text-align:center;position:relative;overflow:hidden}
+.cta-deco{position:absolute;left:2rem;top:-2rem;font-family:'Cormorant Garamond',serif;font-size:20rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;user-select:none}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:1rem;position:relative;z-index:1}
+.cta p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.75);max-width:480px;margin:0 auto 2.5rem;line-height:1.75;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-white{background:var(--white);color:var(--coral);border:none;padding:.9rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:700;border-radius:6px;transition:all .2s;text-decoration:none}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-outline-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4);padding:.9rem 2rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;border-radius:6px;transition:all .2s;text-decoration:none}
+.btn-outline-white:hover{border-color:rgba(255,255,255,.8)}
+
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <p class="eyebrow">Our story</p>
+  <h1>Built by a first responder,<br><em>for everyone.</em></h1>
+  <p>The Emergency Education Initiative was founded on a simple belief: the knowledge that saves lives shouldn't sit behind a paywall or a hospital waiting room. It belongs in every community.</p>
+</section>
+
+<section class="mission">
+  <div class="mission-text">
+    <p class="eyebrow">Our mission</p>
+    <h2>Bridging the gap between emergency and care.</h2>
+    <p>Every year, thousands of people die from cardiac arrests, strokes, and other emergencies that were survivable — not because help wasn't coming, but because no one nearby knew what to do in the minutes before it arrived.</p>
+    <p>We exist to change that. Our free programs train everyday people to act confidently in the critical window before professional help arrives.</p>
+    <div class="mission-values">
+      <div class="value-row"><div class="value-icon">🎯</div><div><div class="value-title">Accessible</div><div class="value-desc">Every program is free, no registration barriers, and designed for people with zero medical background.</div></div></div>
+      <div class="value-row"><div class="value-icon">🔬</div><div><div class="value-title">Evidence-based</div><div class="value-desc">All content is grounded in current emergency medicine guidelines and reviewed by our medical lead.</div></div></div>
+      <div class="value-row"><div class="value-icon">🤝</div><div><div class="value-title">Community-first</div><div class="value-desc">We go where people are — schools, workplaces, faith communities, neighborhood centers.</div></div></div>
+    </div>
+  </div>
+  <div class="mission-visual">
+    <div class="mission-img">
+      <div class="mission-img-dots"></div>
+      <div class="mission-img-letter">EEI</div>
+      <div class="mission-badge"><strong>100%</strong><span>Free to attend</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-band">
+  <div class="stat-cell"><div class="stat-num">1,200<span>+</span></div><div class="stat-lbl">Community members trained</div></div>
+  <div class="stat-cell"><div class="stat-num">40<span>+</span></div><div class="stat-lbl">Free workshops held</div></div>
+  <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lbl">Emergency programs offered</div></div>
+  <div class="stat-cell"><div class="stat-num">$0</div><div class="stat-lbl">Cost to attend</div></div>
+</div>
+
+<section class="founders">
+  <div class="founders-header">
+    <p class="eyebrow">The team</p>
+    <h2>Who we are</h2>
+    <p>EEI was co-founded by an EMT and a community advocate who met through shared frustration — too many people didn't know what to do in an emergency, and too few organizations were doing anything about it.</p>
+  </div>
+  <div class="founders-grid">
+    <div class="founder-card">
+      <div class="founder-top">
+        <div class="founder-avatar">JD</div>
+        <div>
+          <div class="founder-name">Jane Doe</div>
+          <div class="founder-title">Co-founder &amp; Executive Director</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <span class="founder-tag">Community outreach</span>
+        <p>Jane brings [X] years of experience in community organizing and nonprofit management. She oversees operations, partnerships, and fundraising for EEI.</p>
+        <p>— Placeholder: add your real bio here —</p>
+      </div>
+    </div>
+    <div class="founder-card">
+      <div class="founder-top">
+        <div class="founder-avatar">RS</div>
+        <div>
+          <div class="founder-name">Ryan Smith, EMT-B</div>
+          <div class="founder-title">Co-founder &amp; Medical Program Lead</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <span class="founder-tag">Emergency medicine</span>
+        <p>Ryan is a certified EMT with [X] years of field experience responding to cardiac arrests, strokes, and medical emergencies across [county/region].</p>
+        <p>Every program EEI offers is built around what he's seen in the field — and the moments where a trained bystander made all the difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline">
+  <p class="eyebrow">Our history</p>
+  <h2>How we got here</h2>
+  <div class="timeline-items">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div><div class="tl-year">2024</div><div class="tl-title">EEI is founded</div><div class="tl-desc">Jane and Ryan co-found the Emergency Education Initiative after [add founding story here — what sparked the idea].</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div><div class="tl-year">2024</div><div class="tl-title">First workshop</div><div class="tl-desc">EEI hosts its first free CPR workshop at [location], training [X] community members in a single afternoon.</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div><div class="tl-year">2025</div><div class="tl-title">501(c)(3) status granted</div><div class="tl-desc">The IRS grants EEI nonprofit status, enabling tax-deductible donations and expanded grant eligibility.</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div><div class="tl-year">2025</div><div class="tl-title">1,000 people trained</div><div class="tl-desc">EEI reaches its first major milestone — over 1,000 community members trained across New Jersey.</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div></div>
+      <div><div class="tl-year">2026</div><div class="tl-title">Expanding programs</div><div class="tl-desc">EEI launches new programs in diabetic emergency response and anaphylaxis and begins county-wide outreach partnerships.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <p class="eyebrow">Our partners</p>
+  <h2>Organizations we work with</h2>
+  <p>We partner with schools, community centers, hospitals, and businesses across New Jersey to bring free emergency education to as many people as possible.</p>
+  <div class="partners-grid">
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+    <div class="partner-tile"><span>Partner name</span></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-deco">"</div>
+  <h2>Join us in building a safer community.</h2>
+  <p>Volunteer, donate, or host a workshop — every contribution brings emergency education to someone who needs it.</p>
+  <div class="cta-btns">
+    <a href="donate.html" class="btn-white">Donate</a>
+    <a href="contact.html" class="btn-outline-white">Volunteer or partner</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+</body>
+</html>

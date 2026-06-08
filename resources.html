@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Emergency Education Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#2C2C2A;--slate-mid:#5F5E5A;--slate-light:#B4B2A9;--slate-tint:#F1EFE8;
+  --coral:#C8522A;--coral-dark:#8C3519;--coral-mid:#D96A3E;--coral-light:#EDA07E;--coral-tint:#FAECE7;
+  --blush:#FDF7F5;--blush-mid:#F9EFE9;--white:#ffffff;--border:#EDE8E2;--border-strong:#D9D2C8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:var(--slate);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-monogram{width:38px;height:38px;background:var(--slate);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.nav-monogram::after{content:'';position:absolute;bottom:-3px;right:-3px;width:13px;height:13px;border-radius:4px;background:var(--coral)}
+.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
+.nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--slate-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.active{color:var(--coral);font-weight:600}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav:hover{border-color:var(--slate-mid)}
+.btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
+.btn-coral-nav:hover{background:var(--coral-dark)}
+
+.page-hero{padding:140px 4rem 80px;background:var(--blush);position:relative;overflow:hidden;animation:fadeUp .8s ease both}
+.hero-bg{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(200,82,42,0.07),transparent 65%);pointer-events:none}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.65rem}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;color:var(--slate);margin-bottom:1rem;letter-spacing:-.01em}
+.page-hero h1 em{font-style:italic;color:var(--coral)}
+.page-hero>p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--slate-mid);max-width:520px}
+
+/* FILTER TABS */
+.filter-bar{padding:0 4rem 3rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.filter-btn{padding:.5rem 1.25rem;border:1.5px solid var(--border);background:var(--white);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--slate-mid);border-radius:999px;transition:all .2s}
+.filter-btn:hover{border-color:var(--slate-mid);color:var(--slate)}
+.filter-btn.active{background:var(--slate);color:var(--white);border-color:var(--slate)}
+
+/* DOWNLOADS */
+.section{padding:0 4rem 6rem}
+.section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem}
+.section-head h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--slate)}
+.section-head span{font-size:.78rem;font-weight:600;color:var(--slate-light)}
+.downloads-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.dl-card{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;display:flex;flex-direction:column;gap:.85rem;
+  transition:all .22s;cursor:default;
+}
+.dl-card:hover{border-color:var(--coral-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.dl-top{display:flex;align-items:center;gap:.85rem}
+.dl-icon{width:42px;height:42px;border-radius:10px;background:var(--coral-tint);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.dl-meta{flex:1}
+.dl-topic{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:.2rem}
+.dl-name{font-size:.925rem;font-weight:600;color:var(--slate);line-height:1.3}
+.dl-desc{font-size:.82rem;color:var(--slate-mid);line-height:1.6}
+.dl-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.5rem;border-top:1px solid var(--border)}
+.dl-type{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-light)}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:700;color:var(--coral);
+  text-decoration:none;background:var(--coral-tint);
+  padding:.3rem .85rem;border-radius:999px;transition:background .2s;
+}
+.dl-btn:hover{background:var(--coral-light);color:var(--white)}
+
+/* VIDEOS */
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .22s}
+.video-card:hover{border-color:var(--coral-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.video-thumb{
+  background:var(--slate);height:160px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.video-thumb-letter{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.07)}
+.video-play{
+  position:absolute;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(200,82,42,.9);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  transition:transform .2s,background .2s;
+}
+.video-card:hover .video-play{transform:scale(1.1);background:var(--coral)}
+.video-body{padding:1.25rem}
+.video-topic{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:.3rem}
+.video-title{font-size:.925rem;font-weight:600;color:var(--slate);margin-bottom:.5rem;line-height:1.35}
+.video-desc{font-size:.82rem;color:var(--slate-mid);line-height:1.6}
+.video-note{font-size:.72rem;color:var(--slate-light);margin-top:.65rem}
+
+/* EXTERNAL LINKS */
+.ext-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.ext-card{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;
+  text-decoration:none;transition:all .22s;
+}
+.ext-card:hover{border-color:var(--coral-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.ext-icon{width:44px;height:44px;border-radius:10px;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ext-name{font-size:.925rem;font-weight:700;color:var(--slate);margin-bottom:.25rem;display:flex;align-items:center;gap:.4rem}
+.ext-name::after{content:'↗';font-size:.75rem;color:var(--coral)}
+.ext-desc{font-size:.82rem;color:var(--slate-mid);line-height:1.55}
+
+/* DIVIDER */
+.section-divider{height:1px;background:var(--border);margin:0 4rem 5rem}
+
+/* CTA */
+.cta-band{background:var(--slate);padding:5rem 4rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2}
+.cta-band p{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.55);margin-top:.5rem;max-width:420px}
+.btn-coral-lg{background:var(--coral);color:var(--white);border:none;padding:.95rem 2.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:700;border-radius:6px;transition:background .2s;text-decoration:none;white-space:nowrap}
+.btn-coral-lg:hover{background:var(--coral-dark)}
+
+footer{background:var(--slate)}
+.footer-main{padding:3.5rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
+.footer-brand span{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;display:block;max-width:240px}
+.footer-col h4{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.25rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p,.footer-bottom a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,.5)}
+.fb-links{display:flex;gap:1.5rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-monogram"><span>E</span></div>
+    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-ghost-nav">Join / Sign Up</a>
+    <button class="btn-coral-nav">Donate</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <p class="eyebrow">Free resources</p>
+  <h1>Everything you need<br><em>to be prepared.</em></h1>
+  <p>Downloadable guides, explainer videos, and trusted external links — all in one place. Share freely with anyone who might need them.</p>
+</section>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this,'all')">All resources</button>
+  <button class="filter-btn" onclick="setFilter(this,'cardiac')">Cardiac arrest</button>
+  <button class="filter-btn" onclick="setFilter(this,'stroke')">Stroke</button>
+  <button class="filter-btn" onclick="setFilter(this,'diabetic')">Diabetic</button>
+  <button class="filter-btn" onclick="setFilter(this,'seizure')">Seizures</button>
+  <button class="filter-btn" onclick="setFilter(this,'choking')">Choking</button>
+  <button class="filter-btn" onclick="setFilter(this,'anaphylaxis')">Anaphylaxis</button>
+</div>
+
+<!-- DOWNLOADS -->
+<section class="section">
+  <div class="section-head">
+    <h2>Downloadable guides</h2>
+    <span>Free PDFs — print or share</span>
+  </div>
+  <div class="downloads-grid">
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">❤️</div><div class="dl-meta"><div class="dl-topic">Cardiac arrest</div><div class="dl-name">Hands-Only CPR Quick Reference</div></div></div>
+      <div class="dl-desc">Step-by-step guide to hands-only CPR for adults. Designed to be printed and posted in homes, workplaces, and community spaces.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 1 page</span><a href="files/cpr-guide.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">🧠</div><div class="dl-meta"><div class="dl-topic">Stroke</div><div class="dl-name">FAST Stroke Recognition Card</div></div></div>
+      <div class="dl-desc">Wallet-sized FAST card explaining the four warning signs of stroke. Add your own and give them to family members.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 1 page</span><a href="files/stroke-fast-card.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">🩸</div><div class="dl-meta"><div class="dl-topic">Diabetic emergency</div><div class="dl-name">Diabetic Emergency Response Guide</div></div></div>
+      <div class="dl-desc">How to recognize hypoglycemia and hyperglycemia, what to do, and when to call 911. Ideal for coworkers of diabetic colleagues.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 2 pages</span><a href="files/diabetic-guide.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">⚡</div><div class="dl-meta"><div class="dl-topic">Seizures</div><div class="dl-name">Seizure First Aid Myth Buster</div></div></div>
+      <div class="dl-desc">Covers the most dangerous myths about seizure response (spoiler: never put anything in someone's mouth) and what to actually do.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 1 page</span><a href="files/seizure-guide.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">🫁</div><div class="dl-meta"><div class="dl-topic">Choking</div><div class="dl-name">Heimlich Maneuver Poster</div></div></div>
+      <div class="dl-desc">Visual poster showing the Heimlich maneuver for adults, children, and infants. Print and post in your kitchen or break room.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 1 page</span><a href="files/heimlich-poster.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+    <div class="dl-card">
+      <div class="dl-top"><div class="dl-icon">💉</div><div class="dl-meta"><div class="dl-topic">Anaphylaxis</div><div class="dl-name">EpiPen Use Guide</div></div></div>
+      <div class="dl-desc">Step-by-step instructions for using an epinephrine auto-injector during a severe allergic reaction. Plain language, no medical background needed.</div>
+      <div class="dl-footer"><span class="dl-type">PDF · 1 page</span><a href="files/epipen-guide.pdf" download class="dl-btn">⬇ Download</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- VIDEOS -->
+<section class="section">
+  <div class="section-head">
+    <h2>Explainer videos</h2>
+    <span>Add your YouTube links when ready</span>
+  </div>
+  <div class="videos-grid">
+    <div class="video-card">
+      <div class="video-thumb"><div class="video-thumb-letter">EEI</div><div class="video-play">▶</div></div>
+      <div class="video-body"><div class="video-topic">Cardiac arrest</div><div class="video-title">How to perform hands-only CPR</div><div class="video-desc">A step-by-step walkthrough of hands-only CPR and how to use an AED, taught by our EMT co-founder.</div><div class="video-note">Replace with YouTube embed when video is ready</div></div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb"><div class="video-thumb-letter">EEI</div><div class="video-play">▶</div></div>
+      <div class="video-body"><div class="video-topic">Stroke</div><div class="video-title">Recognizing stroke with FAST</div><div class="video-desc">Learn the four warning signs of stroke and why acting fast can preserve brain function and save a life.</div><div class="video-note">Replace with YouTube embed when video is ready</div></div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb"><div class="video-thumb-letter">EEI</div><div class="video-play">▶</div></div>
+      <div class="video-body"><div class="video-topic">Diabetic emergency</div><div class="video-title">Spotting a diabetic emergency</div><div class="video-desc">How to tell the difference between hypoglycemia and hyperglycemia — and what to do about each one.</div><div class="video-note">Replace with YouTube embed when video is ready</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXTERNAL LINKS -->
+<section class="section">
+  <div class="section-head">
+    <h2>Trusted external resources</h2>
+    <span>Organizations we reference in our programs</span>
+  </div>
+  <div class="ext-grid">
+    <a href="https://www.heart.org" target="_blank" class="ext-card">
+      <div class="ext-icon">❤️</div>
+      <div><div class="ext-name">American Heart Association</div><div class="ext-desc">The definitive source for CPR guidelines, AED training, and cardiac health education. heart.org</div></div>
+    </a>
+    <a href="https://www.stroke.org" target="_blank" class="ext-card">
+      <div class="ext-icon">🧠</div>
+      <div><div class="ext-name">American Stroke Association</div><div class="ext-desc">Stroke warning signs, risk factors, and recovery resources. stroke.org</div></div>
+    </a>
+    <a href="https://www.diabetes.org" target="_blank" class="ext-card">
+      <div class="ext-icon">🩸</div>
+      <div><div class="ext-name">American Diabetes Association</div><div class="ext-desc">Comprehensive resources on diabetes management, hypoglycemia, and emergency response. diabetes.org</div></div>
+    </a>
+    <a href="https://www.epilepsy.com" target="_blank" class="ext-card">
+      <div class="ext-icon">⚡</div>
+      <div><div class="ext-name">Epilepsy Foundation</div><div class="ext-desc">Seizure first aid training, myth-busting guides, and resources for caregivers. epilepsy.com</div></div>
+    </a>
+    <a href="https://www.aafa.org" target="_blank" class="ext-card">
+      <div class="ext-icon">💉</div>
+      <div><div class="ext-name">Asthma and Allergy Foundation</div><div class="ext-desc">Anaphylaxis action plans, EpiPen guidance, and allergy awareness resources. aafa.org</div></div>
+    </a>
+    <a href="https://www.redcross.org" target="_blank" class="ext-card">
+      <div class="ext-icon">🏥</div>
+      <div><div class="ext-name">American Red Cross</div><div class="ext-desc">First aid training, disaster preparedness, and CPR certification programs. redcross.org</div></div>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h2>Want to learn in person?</h2>
+    <p>Our free workshops go deeper than any PDF. Find one near you or ask us to come to your community.</p>
+  </div>
+  <a href="programs.html" class="btn-coral-lg">Browse free workshops →</a>
+</div>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <p>Emergency Education Initiative</p>
+      <span>Free emergency training for communities across New Jersey. Founded by an EMT and a community advocate.</span>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#">CPR &amp; AED</a></li>
+        <li><a href="#">Stroke</a></li>
+        <li><a href="#">Diabetic Emergencies</a></li>
+        <li><a href="#">Seizures</a></li>
+        <li><a href="#">Choking</a></li>
+        <li><a href="#">Anaphylaxis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Volunteer</a></li>
+        <li><a href="contact.html">Host a Workshop</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+function setFilter(el, topic) {
+  document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
