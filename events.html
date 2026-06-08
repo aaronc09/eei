@@ -18,9 +18,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:va
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-monogram{width:38px;height:38px;background:var(--slate);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
-.nav-monogram::after{content:'';position:absolute;bottom:-3px;right:-3px;width:13px;height:13px;border-radius:4px;background:var(--coral)}
-.nav-monogram span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1;position:relative;z-index:1}
+.nav-logo{width:48px;height:48px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
 .nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
 .nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
 .nav-links{display:flex;gap:2.25rem;list-style:none}
@@ -154,8 +152,8 @@ footer{background:var(--slate)}
 
 <nav>
   <a class="nav-brand" href="index.html">
-    <div class="nav-monogram"><span>E</span></div>
-    <div class="nav-wordmark">Emergency Education Initiative<small>501(c)(3) nonprofit</small></div>
+    <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
+    <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
   <ul class="nav-links">
     <li><a href="programs.html">Programs</a></li>
@@ -370,7 +368,7 @@ footer{background:var(--slate)}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Emergency Education Initiative · 501(c)(3) nonprofit organization</p>
+    <p>© 2026 Emergency Education Initiative · Nonprofit Organization</p>
     <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
   </div>
 </footer>
