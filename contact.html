@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Emergency Education Initiative</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -319,28 +321,28 @@ footer{background:var(--slate)}
       <h2>Send us a message</h2>
       <p>We'll get back to you within 48 hours.</p>
 
-      <div id="form-body">
+      <form id="form-body" onsubmit="return submitForm(event)">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First name</label>
-            <input type="text" class="form-input" placeholder="Jane">
+            <input type="text" name="First name" class="form-input" placeholder="Jane" required>
           </div>
           <div class="form-group">
             <label class="form-label">Last name</label>
-            <input type="text" class="form-input" placeholder="Doe">
+            <input type="text" name="Last name" class="form-input" placeholder="Doe" required>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-input" placeholder="jane@example.com">
+          <input type="email" name="Email" class="form-input" placeholder="jane@example.com" required>
         </div>
         <div class="form-group">
           <label class="form-label">Organization <span style="font-weight:400;color:var(--slate-light)">(optional)</span></label>
-          <input type="text" class="form-input" placeholder="School, workplace, community group...">
+          <input type="text" name="Organization" class="form-input" placeholder="School, workplace, community group...">
         </div>
         <div class="form-group">
           <label class="form-label">Reason for reaching out</label>
-          <select class="form-select form-input">
+          <select class="form-select form-input" name="Reason">
             <option value="">Select one...</option>
             <option>General question</option>
             <option>Host a workshop</option>
@@ -353,11 +355,15 @@ footer{background:var(--slate)}
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell us a bit more..."></textarea>
+          <textarea class="form-textarea" name="Message" placeholder="Tell us a bit more..." required></textarea>
         </div>
-        <button class="submit-btn" onclick="submitForm()">Send message →</button>
+        <input type="hidden" name="_subject" value="New message from the EEI website contact form">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <button type="submit" class="submit-btn">Send message →</button>
         <p class="form-note">We read every message personally and respond within 48 hours.</p>
-      </div>
+      </form>
 
       <div class="success-msg" id="success-msg">
         <div class="success-icon">✅</div>
@@ -416,9 +422,28 @@ footer{background:var(--slate)}
 </footer>
 
 <script>
-function submitForm() {
-  document.getElementById('form-body').style.display = 'none';
-  document.getElementById('success-msg').classList.add('show');
+async function submitForm(event) {
+  event.preventDefault();
+  const form = event.target;
+  const btn = form.querySelector('.submit-btn');
+  const originalLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/contact@eeihealth.org', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    });
+    if (!res.ok) throw new Error('Request failed');
+    form.style.display = 'none';
+    document.getElementById('success-msg').classList.add('show');
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+    alert("Something went wrong sending your message. Please email us directly at contact@eeihealth.org.");
+  }
+  return false;
 }
 const faqs = document.querySelectorAll('.faq-item');
 faqs.forEach(f => {
