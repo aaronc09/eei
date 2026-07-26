@@ -13,4 +13,4 @@ Though information is widely available, it is often difficult to access in times
 
 Ian Oak (Co-founder): Ian is responsible for developing the organization’s mission, goals, and internal policies. He lays out the organization’s foundation and ensures that all events properly align with the core principles. 
 
-Aaron Choi (Co-founder): Aaron leads in reaching out to other nonprofit organizations, healthcare establishments, and community groups. He focuses on building partnerships that enable Vital Bridge to have an unbound outreach. 
+Aaron Choi (Co-founder): Aaron leads in reaching out to other nonprofit organizations, healthcare establishments, and community groups. He focuses on building partnerships that enable EEI to have an unbound outreach. 
