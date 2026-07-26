@@ -104,6 +104,7 @@ nav{
 .prog-pill{display:inline-flex;align-items:center;margin-top:1.1rem;font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--coral-tint);color:var(--coral-dark);padding:.28rem .85rem;border-radius:999px}
 
 .why{padding:8rem 4rem;background:var(--blush-mid);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.why:has(.why-right.hidden-until-ready){grid-template-columns:1fr}
 .why-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:1.35rem}
 .why-left p{font-size:.975rem;font-weight:300;line-height:1.82;color:var(--slate-mid);margin-bottom:1rem}
 .learn-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--coral);text-decoration:none;margin-top:.5rem;transition:gap .2s}
@@ -177,7 +178,7 @@ footer{background:#EFE3D8}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 </style>
-<link rel="stylesheet" href="css/responsive.css?v=2">
+<link rel="stylesheet" href="css/responsive.css?v=3">
 <script src="js/reveal.js?v=2" defer></script>
 </head>
 <body>
@@ -232,19 +233,13 @@ footer{background:#EFE3D8}
       </div>
     </div>
   </div>
-  <div class="hero-strip">
+  <div class="hero-strip hidden-until-ready">
     <div class="hs-cell"><div class="hs-label">People trained</div><div class="hs-val">N/A<span>+</span></div></div>
     <div class="hs-cell"><div class="hs-label">Free workshops</div><div class="hs-val">N/A<span>+</span></div></div>
     <div class="hs-cell"><div class="hs-label">Topics covered</div><div class="hs-val">6<span> programs</span></div></div>
     <div class="hs-cell"><div class="hs-label">Cost to attend</div><div class="hs-val">$<span>0</span></div></div>
   </div>
 </section>
-
-<div class="announce">
-  <span class="ann-badge">New</span>
-  <span class="ann-text">Stroke awareness workshops now available in Bergen &amp; Passaic County.</span>
-  <a href="contact.html" class="ann-link">Register now →</a>
-</div>
 
 <section class="programs">
   <div class="programs-header">
@@ -255,12 +250,12 @@ footer{background:#EFE3D8}
     <p class="programs-header-right">Evidence-based programs designed by an active EMT — delivered in plain language for people with no medical background. Every session is free and open to all.</p>
   </div>
   <div class="prog-grid">
-    <div class="prog-card"><div class="prog-card-num">01</div><h3>Cardiac Arrest &amp; CPR</h3><p>Hands-only CPR and AED use — two skills that take under an hour and can triple survival rates in sudden cardiac arrest.</p><span class="prog-pill">60 min · Hands-on</span></div>
-    <div class="prog-card"><div class="prog-card-num">02</div><h3>Stroke Recognition</h3><p>Learn FAST and what to do in the minutes before EMS arrives. Time is brain — every second counts.</p><span class="prog-pill">45 min · Discussion</span></div>
-    <div class="prog-card"><div class="prog-card-num">03</div><h3>Diabetic Emergencies</h3><p>Recognize hypo- and hyperglycemia, respond safely, and know when to call 911. Designed for families and coworkers.</p><span class="prog-pill">45 min · Discussion</span></div>
-    <div class="prog-card"><div class="prog-card-num">04</div><h3>Seizure First Aid</h3><p>What to do — and what not to do. We bust dangerous myths and build calm, confident response skills.</p><span class="prog-pill">30 min · Discussion</span></div>
-    <div class="prog-card"><div class="prog-card-num">05</div><h3>Choking Response</h3><p>The Heimlich maneuver for adults, children, and infants — with hands-on mannequin practice included.</p><span class="prog-pill">30 min · Hands-on</span></div>
-    <div class="prog-card"><div class="prog-card-num">06</div><h3>Anaphylaxis &amp; EpiPen</h3><p>Recognize severe allergic reactions and use an epinephrine auto-injector with confidence and clarity.</p><span class="prog-pill">30 min · Hands-on</span></div>
+    <div class="prog-card"><div class="prog-card-num">01</div><h3>Cardiac Arrest &amp; CPR</h3><p>Hands-only CPR and AED use — two skills that take under an hour and can triple survival rates in sudden cardiac arrest.</p></div>
+    <div class="prog-card"><div class="prog-card-num">02</div><h3>Stroke Recognition</h3><p>Learn FAST and what to do in the minutes before EMS arrives. Time is brain — every second counts.</p></div>
+    <div class="prog-card"><div class="prog-card-num">03</div><h3>Diabetic Emergencies</h3><p>Recognize hypo- and hyperglycemia, respond safely, and know when to call 911. Designed for families and coworkers.</p></div>
+    <div class="prog-card"><div class="prog-card-num">04</div><h3>Seizure First Aid</h3><p>What to do — and what not to do. We bust dangerous myths and build calm, confident response skills.</p></div>
+    <div class="prog-card"><div class="prog-card-num">05</div><h3>Choking Response</h3><p>The Heimlich maneuver for adults, children, and infants — with hands-on mannequin practice included.</p></div>
+    <div class="prog-card"><div class="prog-card-num">06</div><h3>Anaphylaxis &amp; EpiPen</h3><p>Recognize severe allergic reactions and use an epinephrine auto-injector with confidence and clarity.</p></div>
   </div>
 </section>
 
@@ -272,7 +267,7 @@ footer{background:#EFE3D8}
     <p>Our programs are designed by an active EMT and built around what he's seen on the job. Every course is free, every lesson is practical, and no medical background is required.</p>
     <a href="about.html" class="learn-link">Read our approach →</a>
   </div>
-  <div class="why-right">
+  <div class="why-right hidden-until-ready">
     <div class="why-stat"><div class="why-bar why-bar-coral"></div><div><div class="why-stat-num">N/A</div><div class="why-stat-label">community members trained since founding</div></div></div>
     <div class="why-stat"><div class="why-bar why-bar-slate"></div><div><div class="why-stat-num">N/A</div><div class="why-stat-label">free workshops held across NJ communities</div></div></div>
     <div class="why-stat"><div class="why-bar why-bar-light"></div><div><div class="why-stat-num">N/A</div><div class="why-stat-label">community and organizational partners</div></div></div>

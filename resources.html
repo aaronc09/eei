@@ -33,7 +33,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,
 .nav-links a:hover{color:var(--slate)}
 .nav-links a.active{color:var(--coral);font-weight:600}
 .nav-actions{display:flex;gap:.75rem;align-items:center}
-.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s}
+.btn-ghost-nav{font-size:.82rem;font-weight:600;color:var(--slate);background:none;border:1.5px solid var(--border-strong);padding:.5rem 1.15rem;cursor:pointer;border-radius:999px;transition:all .2s;text-decoration:none}
 .btn-ghost-nav:hover{border-color:var(--slate-mid)}
 .btn-coral-nav{font-size:.82rem;font-weight:600;color:var(--white);background:var(--coral);border:none;padding:.5rem 1.3rem;cursor:pointer;border-radius:999px;transition:background .2s}
 .btn-coral-nav:hover{background:var(--coral-dark)}
@@ -46,10 +46,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,
 .page-hero>p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--slate-mid);max-width:520px}
 
 /* FILTER TABS */
-.filter-bar{padding:0 4rem 3rem;display:flex;gap:.6rem;flex-wrap:wrap}
-.filter-btn{padding:.5rem 1.25rem;border:1.5px solid var(--border);background:var(--white);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--slate-mid);border-radius:999px;transition:all .2s}
-.filter-btn:hover{border-color:var(--slate-mid);color:var(--slate)}
-.filter-btn.active{background:var(--slate);color:var(--white);border-color:var(--slate)}
 
 /* DOWNLOADS */
 .section{padding:0 4rem 6rem}
@@ -144,7 +140,7 @@ footer{background:#EFE3D8}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<link rel="stylesheet" href="css/responsive.css?v=2">
+<link rel="stylesheet" href="css/responsive.css?v=3">
 <script src="js/reveal.js?v=2" defer></script>
 </head>
 <body>
@@ -174,16 +170,6 @@ footer{background:#EFE3D8}
   <h1>Everything you need<br><em>to be prepared.</em></h1>
   <p>Downloadable guides, explainer videos, and trusted external links — all in one place. Share freely with anyone who might need them.</p>
 </section>
-
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter(this,'all')">All resources</button>
-  <button class="filter-btn" onclick="setFilter(this,'cardiac')">Cardiac arrest</button>
-  <button class="filter-btn" onclick="setFilter(this,'stroke')">Stroke</button>
-  <button class="filter-btn" onclick="setFilter(this,'diabetic')">Diabetic</button>
-  <button class="filter-btn" onclick="setFilter(this,'seizure')">Seizures</button>
-  <button class="filter-btn" onclick="setFilter(this,'choking')">Choking</button>
-  <button class="filter-btn" onclick="setFilter(this,'anaphylaxis')">Anaphylaxis</button>
-</div>
 
 <!-- DOWNLOADS -->
 <section class="section">
@@ -374,11 +360,6 @@ footer{background:#EFE3D8}
 </footer>
 
 <script>
-function setFilter(el, topic) {
-  document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
-  el.classList.add('active');
-}
-
 document.querySelector('.nav-toggle').addEventListener('click',function(){
   const open=document.querySelector('nav').classList.toggle('nav-open');
   this.setAttribute('aria-expanded',open);
