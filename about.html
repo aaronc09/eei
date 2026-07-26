@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us — Emergency Education Initiative</title>
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/eeifavicon2.png?v=4">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="description" content="Meet the team behind the Emergency Education Initiative — two NJ students bringing free, life-saving emergency response training to their community.">
 <meta property="og:title" content="About Us — Emergency Education Initiative">
@@ -25,7 +25,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:va
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo{width:48px;height:48px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
+.nav-logo{width:52px;height:42px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
 .nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
 .nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
 .nav-links{display:flex;gap:2.25rem;list-style:none}
@@ -138,13 +138,14 @@ footer{background:#EFE3D8}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/responsive.css?v=2">
+<script src="js/reveal.js?v=2" defer></script>
 </head>
 <body>
 
 <nav>
   <a class="nav-brand" href="index.html">
-    <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
+    <img class="nav-logo" src="images/eeiicon2.png?v=3" alt="Emergency Education Initiative logo">
     <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -188,7 +189,7 @@ footer{background:#EFE3D8}
   </div>
 </section>
 
-<div class="stats-band">
+<div class="stats-band hidden-until-ready">
   <div class="stat-cell"><div class="stat-num">—</div><div class="stat-lbl">Community members trained</div></div>
   <div class="stat-cell"><div class="stat-num">—</div><div class="stat-lbl">Free workshops held</div></div>
   <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lbl">Emergency programs offered</div></div>
@@ -256,7 +257,7 @@ footer{background:#EFE3D8}
   </div>
 </section>
 
-<section class="partners" id="partners">
+<section class="partners hidden-until-ready" id="partners">
   <p class="eyebrow">Our partners</p>
   <h2>Organizations we work with</h2>
   <p>We partner with schools, community centers, hospitals, and businesses across New Jersey to bring free emergency education to as many people as possible.</p>
@@ -304,7 +305,7 @@ footer{background:#EFE3D8}
       <ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="about.html">Our Team</a></li>
-        <li><a href="about.html#partners">Partners</a></li>
+        <li class="hidden-until-ready"><a href="about.html#partners">Partners</a></li>
         <li><a href="#">Annual Report</a></li>
         <li><a href="#">Press</a></li>
       </ul>

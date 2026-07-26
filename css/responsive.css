@@ -3,6 +3,26 @@
 
 img{max-width:100%}
 
+/* ===================== SCROLL REVEAL ===================== */
+/* js/reveal.js adds .reveal-init then .is-visible the first time an element
+   scrolls into view, then strips both classes once the transition finishes —
+   so hover/etc. rules on these elements are never permanently overridden. */
+.reveal-init{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal-init.is-visible{opacity:1;transform:translateY(0)}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal-init{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* ===================== HIDDEN UNTIL READY ===================== */
+/* Sections/links parked here on purpose — real content isn't ready yet.
+   Markup is left in place; remove this class per-element to bring a section back. */
+.hidden-until-ready{display:none!important}
+
 /* ---------- Hamburger nav toggle (built, hidden on desktop) ---------- */
 .nav-toggle{
   display:none;background:none;border:none;cursor:pointer;

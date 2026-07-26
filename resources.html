@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources — Emergency Education Initiative</title>
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/eeifavicon2.png?v=4">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="description" content="Free downloadable emergency response guides in English and Spanish — CPR, stroke, diabetic emergencies, seizures, choking, and anaphylaxis.">
 <meta property="og:title" content="Resources — Emergency Education Initiative">
@@ -25,7 +25,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:va
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo{width:48px;height:48px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
+.nav-logo{width:52px;height:42px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
 .nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
 .nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
 .nav-links{display:flex;gap:2.25rem;list-style:none}
@@ -144,13 +144,14 @@ footer{background:#EFE3D8}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/responsive.css?v=2">
+<script src="js/reveal.js?v=2" defer></script>
 </head>
 <body>
 
 <nav>
   <a class="nav-brand" href="index.html">
-    <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
+    <img class="nav-logo" src="images/eeiicon2.png?v=3" alt="Emergency Education Initiative logo">
     <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -260,10 +261,10 @@ footer{background:#EFE3D8}
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="section-divider hidden-until-ready"></div>
 
 <!-- VIDEOS -->
-<section class="section">
+<section class="section hidden-until-ready">
   <div class="section-head">
     <h2>Explainer videos</h2>
     <span>Add your YouTube links when ready</span>
@@ -350,7 +351,7 @@ footer{background:#EFE3D8}
       <ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="about.html">Our Team</a></li>
-        <li><a href="about.html#partners">Partners</a></li>
+        <li class="hidden-until-ready"><a href="about.html#partners">Partners</a></li>
         <li><a href="#">Annual Report</a></li>
         <li><a href="#">Press</a></li>
       </ul>

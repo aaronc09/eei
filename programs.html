@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programs — Emergency Education Initiative</title>
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/eeifavicon2.png?v=4">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="description" content="Explore EEI's free emergency response programs — CPR &amp; AED, stroke recognition, diabetic emergencies, seizures, choking, and anaphylaxis.">
 <meta property="og:title" content="Programs — Emergency Education Initiative">
@@ -25,7 +25,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--blush);color:va
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo{width:48px;height:48px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
+.nav-logo{width:52px;height:42px;object-fit:contain;display:block;flex-shrink:0;border-radius:8px}
 .nav-wordmark{font-size:.875rem;font-weight:700;color:var(--slate);line-height:1.2}
 .nav-wordmark small{display:block;font-size:.65rem;font-weight:400;color:var(--slate-light);letter-spacing:.02em}
 .nav-links{display:flex;gap:2.25rem;list-style:none}
@@ -94,6 +94,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,
   text-align:center;text-decoration:none;display:block;
 }
 .prog-signup-btn:hover{background:var(--coral-dark)}
+.settings-note{margin-top:2rem;background:var(--coral-tint);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;text-align:center}
+.settings-note p{font-size:.9rem;color:var(--slate-mid);line-height:1.7}
+.settings-note strong{color:var(--slate)}
+.settings-note a{color:var(--coral);font-weight:700;text-decoration:none}
+.settings-note a:hover{color:var(--coral-dark)}
 
 /* WHO IS IT FOR */
 .who-section{padding:7rem 4rem;background:var(--blush-mid)}
@@ -160,13 +165,14 @@ footer{background:#EFE3D8}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/responsive.css?v=2">
+<script src="js/reveal.js?v=2" defer></script>
 </head>
 <body>
 
 <nav>
   <a class="nav-brand" href="index.html">
-    <img class="nav-logo" src="images/logo.png" alt="Emergency Education Initiative logo">
+    <img class="nav-logo" src="images/eeiicon2.png?v=3" alt="Emergency Education Initiative logo">
     <div class="nav-wordmark">Emergency Education Initiative<small>Nonprofit Organization</small></div>
   </a>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -191,7 +197,7 @@ footer{background:#EFE3D8}
 </section>
 
 <div class="quick-facts">
-  <div class="qf-cell"><span class="qf-icon">📋</span><div><div class="qf-num">6</div><div class="qf-label">Programs available</div></div></div>
+  <div class="qf-cell"><span class="qf-icon">📋</span><div><div class="qf-num">6+</div><div class="qf-label">Organization types</div></div></div>
   <div class="qf-cell"><span class="qf-icon">⏱️</span><div><div class="qf-num">30–60</div><div class="qf-label">Minutes per session</div></div></div>
   <div class="qf-cell"><span class="qf-icon">👥</span><div><div class="qf-num">Any</div><div class="qf-label">Group size welcome</div></div></div>
   <div class="qf-cell"><span class="qf-icon">💰</span><div><div class="qf-num">$0</div><div class="qf-label">Always free</div></div></div>
@@ -201,162 +207,160 @@ footer{background:#EFE3D8}
   <div class="programs-header">
     <div>
       <p class="eyebrow">What we offer</p>
-      <h2>Our six programs</h2>
+      <h2>Tailored training for every setting</h2>
     </div>
-    <p>Each program is self-contained — attend one or all six. Sessions can be booked individually or as a full-day community event.</p>
+    <p>Every session is customized to the environment we're training in. A restaurant session looks different from a gym session — because the emergencies do too.</p>
   </div>
   <div class="programs-grid">
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">❤️</div>
+        <div class="prog-emoji-box">🍽️</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 01</div>
-          <div class="prog-title">Cardiac Arrest &amp; CPR</div>
+          <div class="prog-num">Setting 01</div>
+          <div class="prog-title">Restaurants</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">60 min</span>
-            <span class="prog-pill pill-type">Hands-on</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">Sudden cardiac arrest kills over 350,000 Americans each year — most of them outside a hospital. Bystander CPR can double or triple survival rates, yet fewer than half of cardiac arrest victims receive it. This session changes that.</p>
+        <p class="prog-desc">Kitchens and dining rooms carry their own emergency profile — hot surfaces, open flames, and food allergies in close quarters. We train staff to recognize and respond to the incidents most likely to happen on your floor.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Recognize the signs of sudden cardiac arrest</div>
-          <div class="prog-learn-item">Perform hands-only CPR on adults</div>
-          <div class="prog-learn-item">Use an AED (automated external defibrillator)</div>
-          <div class="prog-learn-item">Keep someone alive until EMS arrives</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Treat burns from grills, fryers, and hot surfaces</div>
+          <div class="prog-learn-item">Recognize the signs of a severe allergic reaction</div>
+          <div class="prog-learn-item">Administer an EpiPen correctly and confidently</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">🧠</div>
+        <div class="prog-emoji-box">🏢</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 02</div>
-          <div class="prog-title">Stroke Recognition</div>
+          <div class="prog-num">Setting 02</div>
+          <div class="prog-title">Workplaces</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">45 min</span>
-            <span class="prog-pill pill-type">Discussion</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">Stroke is the leading cause of long-term disability in the US. The faster a stroke is identified and treated, the less brain damage occurs. Knowing the warning signs and acting immediately can preserve function — and save a life.</p>
+        <p class="prog-desc">Employees spend a third of their lives at work, and office environments carry real cardiac and metabolic risk. We prepare your team to respond in the critical minutes before EMS arrives.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Use the FAST method to identify stroke symptoms</div>
-          <div class="prog-learn-item">Understand why every minute matters</div>
-          <div class="prog-learn-item">What to do — and not do — while waiting for EMS</div>
-          <div class="prog-learn-item">Recognize less common stroke symptoms</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Perform hands-only CPR and use an AED</div>
+          <div class="prog-learn-item">Recognize the warning signs of a stroke</div>
+          <div class="prog-learn-item">Respond to a diabetic emergency in a coworker</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">🩸</div>
+        <div class="prog-emoji-box">🏊</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 03</div>
-          <div class="prog-title">Diabetic Emergencies</div>
+          <div class="prog-num">Setting 03</div>
+          <div class="prog-title">Community Pools</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">45 min</span>
-            <span class="prog-pill pill-type">Discussion</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">With over 37 million Americans living with diabetes, the chances you'll encounter a diabetic emergency are significant. Hypoglycemia can cause confusion, unconsciousness, and death — and it's often mistaken for intoxication. This session teaches you to tell the difference and respond correctly.</p>
+        <p class="prog-desc">Water changes everything about an emergency response — from how heat stroke presents to how you safely move an injured swimmer. We train lifeguards and staff for the risks specific to pool environments.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Distinguish hypoglycemia from hyperglycemia</div>
-          <div class="prog-learn-item">Respond safely when someone can and can't swallow</div>
-          <div class="prog-learn-item">Know when to call 911 versus manage at home</div>
-          <div class="prog-learn-item">Support a diabetic colleague or family member</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Recognize and treat heat stroke in swimmers and staff</div>
+          <div class="prog-learn-item">Safely stabilize a suspected spinal injury in the water</div>
+          <div class="prog-learn-item">Respond to a cardiac event near the pool deck</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">⚡</div>
+        <div class="prog-emoji-box">🏋️</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 04</div>
-          <div class="prog-title">Seizure First Aid</div>
+          <div class="prog-num">Setting 04</div>
+          <div class="prog-title">Gyms &amp; Fitness Centers</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">30 min</span>
-            <span class="prog-pill pill-type">Discussion</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">Seizures are frightening to witness — and dangerous myths about how to respond are everywhere. This session sets the record straight. You'll leave knowing exactly what to do and what never to do, so you can respond calmly and effectively.</p>
+        <p class="prog-desc">High-intensity environments raise the stakes for cardiac events and heat-related illness. We equip staff and trainers to act fast when a workout turns into an emergency.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Protect someone during a seizure safely</div>
-          <div class="prog-learn-item">Time the seizure and know when to call 911</div>
-          <div class="prog-learn-item">Debunk the most dangerous myths (never restrain, never put anything in the mouth)</div>
-          <div class="prog-learn-item">Support someone in the postictal recovery phase</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Perform CPR and use an AED on the gym floor</div>
+          <div class="prog-learn-item">Recognize and treat heat exhaustion</div>
+          <div class="prog-learn-item">Recognize sudden cardiac arrest during exertion</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">🫁</div>
+        <div class="prog-emoji-box">⛳</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 05</div>
-          <div class="prog-title">Choking Response</div>
+          <div class="prog-num">Setting 05</div>
+          <div class="prog-title">Country Clubs</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">30 min</span>
-            <span class="prog-pill pill-type">Hands-on</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">Choking is a leading cause of accidental death — and it's almost always survivable with a trained bystander. This hands-on session uses mannequins to give you real practice, not just theory, so you can act confidently in the moment.</p>
+        <p class="prog-desc">Golf courses, tennis courts, and clubhouses bring together members across every age group in the heat, often far from help. We prepare staff to respond wherever on the property an emergency happens.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Recognize the difference between partial and complete airway obstruction</div>
-          <div class="prog-learn-item">Perform the Heimlich maneuver on adults and children</div>
-          <div class="prog-learn-item">Respond to choking in infants under 1 year</div>
-          <div class="prog-learn-item">Perform abdominal thrusts on yourself if alone</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Recognize and treat heat stroke on the course</div>
+          <div class="prog-learn-item">Perform CPR and use an AED for a cardiac event</div>
+          <div class="prog-learn-item">Respond to a diabetic emergency in a member or guest</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
     <div class="prog-card">
       <div class="prog-card-header">
-        <div class="prog-emoji-box">💉</div>
+        <div class="prog-emoji-box">🏫</div>
         <div class="prog-header-text">
-          <div class="prog-num">Program 06</div>
-          <div class="prog-title">Anaphylaxis &amp; EpiPen</div>
+          <div class="prog-num">Setting 06</div>
+          <div class="prog-title">Schools</div>
           <div class="prog-pills">
-            <span class="prog-pill pill-duration">30 min</span>
-            <span class="prog-pill pill-type">Hands-on</span>
+            <span class="prog-pill pill-duration">30–60 min</span>
+            <span class="prog-pill pill-type">Custom</span>
           </div>
         </div>
       </div>
       <div class="prog-card-body">
-        <p class="prog-desc">Severe allergic reactions can progress to life-threatening anaphylaxis within minutes. Epinephrine is the only effective treatment — and every second of delay matters. This session gives you the confidence to recognize anaphylaxis and use an EpiPen correctly.</p>
+        <p class="prog-desc">Classrooms and hallways present a different emergency profile than any other setting — seizures, allergic reactions, and choking among students who can't always advocate for themselves. We train staff to respond calmly and correctly.</p>
         <div class="prog-learn">
-          <div class="prog-learn-title">You'll learn to</div>
-          <div class="prog-learn-item">Identify the signs of anaphylaxis vs. a mild allergic reaction</div>
-          <div class="prog-learn-item">Use an epinephrine auto-injector (EpiPen) step by step</div>
-          <div class="prog-learn-item">Position someone in anaphylactic shock correctly</div>
-          <div class="prog-learn-item">Know when a second dose is needed</div>
+          <div class="prog-learn-title">What we cover</div>
+          <div class="prog-learn-item">Protect a student safely during a seizure</div>
+          <div class="prog-learn-item">Recognize and respond to a severe allergic reaction</div>
+          <div class="prog-learn-item">Perform the Heimlich maneuver on children and adults</div>
         </div>
-        <a href="events.html" class="prog-signup-btn">Find a session →</a>
+        <a href="contact.html" class="prog-signup-btn">Request a session →</a>
       </div>
     </div>
 
+  </div>
+
+  <div class="settings-note">
+    <p><strong>Don't see your setting listed?</strong> These are just examples of the environments we train — not the full list. Every session is built around the space and risks you actually have, so <a href="contact.html">contact us →</a> and we'll work it out together.</p>
   </div>
 </section>
 
@@ -445,7 +449,7 @@ footer{background:#EFE3D8}
       <ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="about.html">Our Team</a></li>
-        <li><a href="about.html#partners">Partners</a></li>
+        <li class="hidden-until-ready"><a href="about.html#partners">Partners</a></li>
         <li><a href="#">Annual Report</a></li>
         <li><a href="#">Press</a></li>
       </ul>
