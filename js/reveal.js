@@ -4,14 +4,14 @@
   var SELECTOR = [
     // whole-section reveals — the big blocks that make scrolling feel alive
     '.about', '.calendar-section', '.corporate', '.cta', '.cta-band', '.donate',
-    '.events-section', '.founders', '.host-section', '.mission', '.partners',
+    '.events-section', '.founders', '.leadership', '.host-section', '.mission', '.partners',
     '.past-section', '.programs', '.programs-section', '.pullquote', '.section',
     '.timeline', '.who-section', '.why',
     // individual cards/blocks within those sections — cascade in on top of the section fade
     '.prog-card', '.who-card', '.stat-card', '.impact-card', '.impact-item', '.social-card',
     '.info-block', '.trust-block', '.ein-block', '.host-form-card', '.form-card',
     '.event-card', '.past-card', '.dl-card', '.ext-card', '.video-card',
-    '.founder-card', '.faq-item', '.donate-card', '.tl-item',
+    '.founder-card', '.leadership-card', '.faq-item', '.donate-card', '.tl-item',
     '.host-text', '.settings-note', '.qf-cell', '.stat-cell', '.hs-cell'
   ].join(',');
 

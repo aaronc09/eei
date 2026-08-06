@@ -88,6 +88,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,247,245,
 .founder-body p:last-child{margin-bottom:0}
 .founder-tag{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.85rem;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--coral-tint);color:var(--coral-dark);padding:.25rem .85rem;border-radius:999px}
 
+/* LEADERSHIP TEAM */
+.leadership{padding:7rem 4rem;background:var(--white)}
+.leadership-header{margin-bottom:3.5rem}
+.leadership-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:.5rem}
+.leadership-header p{font-size:.975rem;font-weight:300;color:var(--slate-mid);max-width:560px;line-height:1.75}
+.leadership-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem}
+.leadership-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .22s,transform .22s;display:flex;flex-direction:column}
+.leadership-card:hover{box-shadow:0 10px 32px rgba(0,0,0,.08);transform:translateY(-3px)}
+.leadership-card-image-section{background:#EFE3D8;padding:2.25rem 1.5rem 1.75rem;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.leadership-card-image-section::before{content:'';position:absolute;right:-22px;top:-22px;width:110px;height:110px;border-radius:50%;background:rgba(44,44,42,.05)}
+.leadership-photo{width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid rgba(255,255,255,.7);position:relative;z-index:1;flex-shrink:0}
+.leadership-card-content{padding:1.5rem 1.75rem 1.85rem;text-align:center;flex:1;display:flex;flex-direction:column}
+.leadership-card-content h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--slate);margin-bottom:.2rem}
+.leadership-role{font-size:.76rem;font-weight:700;color:var(--coral-dark);letter-spacing:.04em;margin-bottom:.9rem}
+.leadership-bio{font-size:.85rem;font-weight:300;line-height:1.7;color:var(--slate-mid);text-align:left}
+
 /* STORY TIMELINE */
 .timeline{padding:7rem 4rem;background:var(--white)}
 .timeline h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.15;margin-bottom:3.5rem}
@@ -138,8 +154,8 @@ footer{background:#EFE3D8}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<link rel="stylesheet" href="css/responsive.css?v=3">
-<script src="js/reveal.js?v=2" defer></script>
+<link rel="stylesheet" href="css/responsive.css?v=4">
+<script src="js/reveal.js?v=3" defer></script>
 </head>
 <body>
 
@@ -233,6 +249,15 @@ footer{background:#EFE3D8}
       </div>
     </div>
   </div>
+</section>
+
+<section class="leadership">
+  <div class="leadership-header">
+    <p class="eyebrow">Our people</p>
+    <h2>Leadership Team</h2>
+    <p>A dedicated team of student leaders working together to expand access to lifesaving education across our communities.</p>
+  </div>
+  <div class="leadership-grid" id="leadership-grid"></div>
 </section>
 
 <section class="timeline">
@@ -330,6 +355,96 @@ footer{background:#EFE3D8}
 document.querySelector('.nav-toggle').addEventListener('click',function(){
   const open=document.querySelector('nav').classList.toggle('nav-open');
   this.setAttribute('aria-expanded',open);
+});
+
+/* ===================== LEADERSHIP TEAM ===================== */
+/* imageKey maps each person to their photo file in images/ (already resolved
+   to the real filename+extension found on disk — Aaron Zhang uses aaronz, not aaron). */
+const leadershipTeam = [
+  {
+    name: "Zoe Geallat",
+    role: "Director of Outreach",
+    imageKey: "zoe.jpeg",
+    bio: "Zoe Geallat serves as the Director of Outreach for the Emergency Education Initiative, where she develops partnerships with schools, libraries, EMS agencies, hospitals, and community organizations to bring lifesaving education to more people. As a senior at Northern Valley Regional High School, Zoe is a certified EMT who has volunteered with her local first aid corps for several years, responding to emergencies and serving her community firsthand. Dedicated to service and leadership, Zoe is actively involved in volunteering and holds multiple leadership positions at her school. She also works as a camp counselor and children's party host and babysits for families throughout the area. These experiences have strengthened her ability to think quickly, lead with confidence, and care for people of all ages. She is passionate about expanding access to emergency education and inspiring others to be prepared to make a difference when every second counts."
+  },
+  {
+    name: "Faith Lee",
+    role: "Director of Outreach",
+    imageKey: "faith.png",
+    bio: "Hi! I'm Faith Lee, one of the Directors of Outreach for the Emergency Education Initiative. I'm a senior at Northern Valley Regional High School and a certified EMT who volunteers for Old Tappan First Aid Corps. Outside of EMS, I serve in various leadership positions in clubs where I've collaborated with others to create meaningful opportunities that strengthen our school and community. Through responding to emergency calls, I've understood how prepared bystanders can make a critical difference in emergencies, inspiring my commitment to helping others feel prepared to step in. As a Director of Outreach, I work to expand EEI's impact by connecting with various organizations to bring life-saving education to more communities."
+  },
+  {
+    name: "Griffin Clarke",
+    role: "Director of Resources",
+    imageKey: "griffin.jpeg",
+    imagePosition: "center 40%",
+    bio: "Griffin Clarke is the Director of Resources for the Emergency Education Initiative. He joined the Old Tappan Volunteer First Aid Corps in April 2025 and became a Crew Chief in April 2026. Griffin uses his hands-on experience in emergency response to manage and improve essential training materials for the organization."
+  },
+  {
+    name: "Aaron Zhang",
+    role: "Director of Resources",
+    imageKey: "aaronz.png",
+    bio: "Hi, my name is Aaron Zhang and I am a rising senior at NVOT. As one of the directors of resources, I will aim to allocate information about our initiative as efficiently and effectively as possible."
+  },
+  {
+    name: "Marie Tenebruso",
+    role: "Director of Operations",
+    imageKey: "marie.png",
+    bio: "Marie Tenebruso is a Director of Operations of the Emergency Education Initiative. A rising junior at NVOT, Marie is currently attending EMT school and aims to complete her training before the end of summer. Marie is excited to apply her knowledge and skills to a community-centered program and is committed to making life-saving education more accessible."
+  },
+  {
+    name: "Isabella Mercado",
+    role: "Director of Operations",
+    imageKey: "izzy.jpeg",
+    bio: "Hi! My name is Isabella Mercado. I earned my EMT certification last year, but have been volunteering with Old Tappan First Aid Corps since my freshman year. I'm an aspiring pediatrician and my favorite hobbies are traveling and arts and crafts."
+  },
+  {
+    name: "Emma Ellison",
+    role: "Director of Media Management",
+    imageKey: "emma.png",
+    bio: "Hi, I'm Emma Ellison, an EMT for the Old Tappan First Aid Corps. I joined the Emergency Education Initiative because I'm passionate about serving my community and helping others feel confident in emergency situations. I'm excited to educate others on lifesaving skills and make a positive impact through this program."
+  },
+  {
+    name: "Luna Oh",
+    role: "Director of Media Management",
+    imageKey: "luna.jpg",
+    bio: "Luna Oh is the Director of Media Management for the Emergency Education Initiative. As a senior at Pascack Hills High School, Luna combines her passion for healthcare with research, volunteering, and community service. As a Volunteer Trainer at Valley Hospital, a Waksman Scholar researcher, and a Hackensack Meridian School of Medicine Intern, she brings commitment to public service into EEI's outreach. Through EEI, Luna is dedicated to expanding awareness of emergency and health education to connect more communities."
+  },
+  {
+    name: "Ben Moon",
+    role: "Fundraising Officer",
+    imageKey: "ben.jpeg",
+    bio: "Hi, my name is Ben Moon and I am a rising junior at Old Tappan. I'm a part of the fundraising team at EEI and can't wait to help others learn about emergency medical services."
+  },
+  {
+    name: "Andrew Milli",
+    role: "Fundraising Officer",
+    imageKey: "andrew.jpeg",
+    bio: "Hi. My name is Andrew and I'm a fundraising officer at EEI. I'm a senior at Northern Valley Old Tappan High School where I run track . As an athlete and a lifeguard, I have gained extensive experience on how to act when a medical emergency happens. Working with other people through clubs, sports, and work has taught me the value of service and perseverance - values that I will bring to those I serve with EEI."
+  }
+];
+
+var LEADERSHIP_IMAGE_VERSION = 2; // bump whenever a photo file is replaced, so browsers don't serve a stale cached copy
+
+function renderLeadershipCard(member){
+  const article = document.createElement('article');
+  article.className = 'leadership-card';
+  const objectPositionStyle = member.imagePosition ? ' style="object-position:' + member.imagePosition + '"' : '';
+  article.innerHTML =
+    '<div class="leadership-card-image-section">' +
+      '<img src="images/' + member.imageKey + '?v=' + LEADERSHIP_IMAGE_VERSION + '" alt="' + member.name + '" class="leadership-photo" loading="lazy"' + objectPositionStyle + '>' +
+    '</div>' +
+    '<div class="leadership-card-content">' +
+      '<h3>' + member.name + '</h3>' +
+      '<p class="leadership-role">' + member.role + '</p>' +
+      '<p class="leadership-bio">' + member.bio + '</p>' +
+    '</div>';
+  return article;
+}
+
+const leadershipGrid = document.getElementById('leadership-grid');
+leadershipTeam.forEach(function(member){
+  leadershipGrid.appendChild(renderLeadershipCard(member));
 });
 </script>
 </body>
